@@ -40,6 +40,10 @@ STAGE["usage-chart"] = "document.querySelectorAll('.chart button')[10].focus()"
 STAGE["message-cost"] = "document.querySelector('details.cost').open=true"
 STAGE["language-picker"] = "var q=document.getElementById('q');q.focus();q.value='a';q.dispatchEvent(new Event('input'))"
 STAGE["system-prompt-editor"] = "var t=document.getElementById('ta');t.value+=' Use examples from everyday life.';t.dispatchEvent(new Event('input'))"
+STAGE["floating-chat-widget"] = "document.getElementById('fab').click();document.activeElement.blur()"
+STAGE["chat-item-menu"] = "document.querySelectorAll('#list .ib')[1].click()"
+STAGE["share-dialog"] = "document.getElementById('open').click();var r=document.querySelector('input[value=link]');r.checked=true;r.dispatchEvent(new Event('change'));document.activeElement.blur()"
+STAGE["conversation-search"] = "var q=document.getElementById('q');q.value='plan';q.dispatchEvent(new Event('input'))"
 STAGE["ai-orb"] = "document.querySelector('[data-s=listen]').click()"
 
 

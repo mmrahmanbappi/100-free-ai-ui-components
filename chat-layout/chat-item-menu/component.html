@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+  Chat List Item Menu: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat List Item Menu | Free AI UI Component</title>
+<meta name="description" content="Each chat in the list has a menu to rename it in place, pin it to the top, or delete it with an undo option.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{width:min(100%,380px);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:10px}
+.wrap h2{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:6px 8px}
+ul{list-style:none;margin:0;padding:0}
+li{position:relative;display:flex;align-items:center;gap:6px;border-radius:9px;padding:0 4px 0 10px}
+li:hover,li:focus-within{background:var(--surface)}
+li a{flex:1;padding:9px 0;color:var(--text);text-decoration:none;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+li .pin{color:var(--accent);display:grid}
+li input{flex:1;border:1px solid var(--accent);border-radius:7px;padding:6px 8px;background:var(--surface);color:var(--ink);font-size:14px;margin:4px 0;min-width:0}
+.ib{width:28px;height:28px;display:grid;place-items:center;border:0;background:none;color:var(--muted);border-radius:7px;cursor:pointer;flex:none}
+.ib:hover{background:var(--surface-2);color:var(--ink)}
+.menu{position:absolute;right:4px;top:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:4px;min-width:150px;z-index:3;list-style:none;margin:0}
+.menu button{width:100%;text-align:left;border:0;background:none;padding:8px 10px;border-radius:7px;font-size:13.5px;color:var(--ink);cursor:pointer}
+.menu button:hover,.menu button:focus{background:var(--surface-2);outline:0}.menu .del{color:var(--bad)}
+.undo{display:flex;justify-content:space-between;align-items:center;margin-top:8px;background:var(--ink);color:var(--bg);border-radius:10px;padding:8px 8px 8px 12px;font-size:13.5px}
+.undo button{border:0;background:none;color:var(--bg);font-weight:700;cursor:pointer;padding:4px 8px;text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap"><h2>Your chats</h2><ul id="list"></ul><div class="undo" id="undo" role="status" aria-live="polite" hidden><span id="ut"></span><button type="button" id="ub">Undo</button></div></div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+var items=[{t:'Party planning',p:false},{t:'Email to my landlord',p:false},{t:'Explain compound interest',p:false},{t:'Trip to Lisbon',p:true},{t:'Weekly meal plan',p:false}];
+var list=document.getElementById('list'),undo=document.getElementById('undo'),ut=document.getElementById('ut'),last=null,timer=null,openMenu=null;
+var PIN='<svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 17v5M9 3h6l-1 6 4 4H6l4-4z\"/></svg>',DOTS='<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"currentColor\" aria-hidden=\"true\"><circle cx=\"5\" cy=\"12\" r=\"1.8\"/><circle cx=\"12\" cy=\"12\" r=\"1.8\"/><circle cx=\"19\" cy=\"12\" r=\"1.8\"/></svg>';
+function close(){if(openMenu){openMenu.remove();openMenu=null;}}
+function render(){close();list.innerHTML='';items.slice().sort(function(a,b){return b.p-a.p;}).forEach(function(it){var li=document.createElement('li');
+  li.innerHTML=(it.p?'<span class="pin" title="Pinned">'+PIN+'</span>':'')+'<a href="#"></a><button class="ib" type="button" aria-haspopup="menu" aria-expanded="false">'+DOTS+'</button>';
+  li.querySelector('a').textContent=it.t;var mb=li.querySelector('.ib');mb.setAttribute('aria-label','Options for '+it.t);
+  mb.addEventListener('click',function(e){e.stopPropagation();var was=openMenu&&openMenu.parentNode===li;close();if(was)return;
+    var m=document.createElement('ul');m.className='menu';m.setAttribute('role','menu');
+    [['Rename',rename],[it.p?'Unpin':'Pin to top',function(){it.p=!it.p;render();}],['Delete',del]].forEach(function(o,i){var b=document.createElement('button');b.type='button';b.setAttribute('role','menuitem');b.textContent=o[0];if(o[0]==='Delete')b.className='del';
+      b.addEventListener('click',function(){close();o[1]();});var l=document.createElement('li');l.setAttribute('role','none');l.appendChild(b);m.appendChild(l);});
+    li.appendChild(m);openMenu=m;mb.setAttribute('aria-expanded','true');m.querySelector('button').focus();
+    m.addEventListener('keydown',function(ev){var bs=[].slice.call(m.querySelectorAll('button')),k=bs.indexOf(document.activeElement);
+      if(ev.key==='ArrowDown'){ev.preventDefault();bs[(k+1)%bs.length].focus();}if(ev.key==='ArrowUp'){ev.preventDefault();bs[(k-1+bs.length)%bs.length].focus();}if(ev.key==='Escape'){close();mb.setAttribute('aria-expanded','false');mb.focus();}});});
+  function rename(){var a=li.querySelector('a'),inp=document.createElement('input');inp.value=it.t;inp.setAttribute('aria-label','Chat name');li.replaceChild(inp,a);inp.focus();inp.select();
+    function done(save){if(save&&inp.value.trim())it.t=inp.value.trim();render();}
+    inp.addEventListener('keydown',function(ev){if(ev.key==='Enter')done(true);if(ev.key==='Escape')done(false);});inp.addEventListener('blur',function(){done(true);});}
+  function del(){var i=items.indexOf(it);last={it:it,i:i};items.splice(i,1);render();ut.textContent='"'+it.t+'" deleted';undo.hidden=false;clearTimeout(timer);timer=setTimeout(function(){undo.hidden=true;last=null;},5000);}
+  list.appendChild(li);});}
+document.getElementById('ub').addEventListener('click',function(){if(!last)return;items.splice(last.i,0,last.it);last=null;undo.hidden=true;render();});
+document.addEventListener('click',close);render();
+</script>
+</body>
+</html>

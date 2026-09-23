@@ -6,7 +6,7 @@ The parts every AI app needs: prompt boxes, thinking animations, token meters, a
 
 **[See every component with a live demo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/)**
 
-60 of 100 components are ready. New ones are added every week.
+70 of 100 components are ready. New ones are added every week.
 
 ## Why use these components
 
@@ -129,9 +129,26 @@ Model pickers, sliders and toggles that control how the AI answers.
 | [![Reply Language Picker](settings/language-picker/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/language-picker/) | **[Reply Language Picker](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/language-picker/)**<br>A searchable list to choose the language for answers. Shows each language in its own script and supports right-to-left text. |
 | [![Privacy Controls](settings/privacy-controls/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/privacy-controls/) | **[Privacy Controls](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/privacy-controls/)**<br>Clear privacy settings for an AI app: save chat history, allow chats to improve the model, auto-delete, plus export and delete with a confirm step. |
 
+### Chat Layouts
+
+Full chat windows, sidebars, widgets and empty states.
+
+| Preview | Component |
+|---|---|
+| [![Full Chat Window](chat-layout/full-chat-window/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/full-chat-window/) | **[Full Chat Window](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/full-chat-window/)**<br>A complete chat screen with a header, scrolling messages and a prompt box at the bottom. Replies stream in, and the view follows along. |
+| [![Chat Sidebar](chat-layout/chat-sidebar/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/chat-sidebar/) | **[Chat Sidebar](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/chat-sidebar/)**<br>A sidebar with past chats grouped by date, a New chat button and the current chat highlighted. On phones it slides in from a menu button. |
+| [![Empty Chat Welcome Screen](chat-layout/empty-chat-state/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/empty-chat-state/) | **[Empty Chat Welcome Screen](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/empty-chat-state/)**<br>The first screen of a new chat: a greeting, example prompts, what the assistant can do and its limits, with the prompt box ready below. |
+| [![Floating Chat Widget](chat-layout/floating-chat-widget/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/floating-chat-widget/) | **[Floating Chat Widget](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/floating-chat-widget/)**<br>A round chat button in the corner that opens a small chat panel, with an unread badge. Escape or the close button hides it again. |
+| [![Split View: Chat and Document](chat-layout/split-view-chat/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/split-view-chat/) | **[Split View: Chat and Document](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/split-view-chat/)**<br>Chat on one side and a live document on the other, the layout used by AI writing tools. On phones it switches to two tabs. |
+| [![Mobile Chat Screen](chat-layout/mobile-chat/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/mobile-chat/) | **[Mobile Chat Screen](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/mobile-chat/)**<br>A phone-sized chat with a back button, assistant name and status, messages, and a prompt bar with an attach button, sized for thumbs. |
+| [![Conversation Search](chat-layout/conversation-search/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/conversation-search/) | **[Conversation Search](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/conversation-search/)**<br>Search through past chats as you type. Matching words are highlighted, and a friendly message appears when nothing is found. |
+| [![Chat List Item Menu](chat-layout/chat-item-menu/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/chat-item-menu/) | **[Chat List Item Menu](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/chat-item-menu/)**<br>Each chat in the list has a menu to rename it in place, pin it to the top, or delete it with an undo option. |
+| [![Sidebar with Pinned Chats and Folders](chat-layout/sidebar-folders/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/sidebar-folders/) | **[Sidebar with Pinned Chats and Folders](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/sidebar-folders/)**<br>A chat sidebar with a pinned section and folders you can open and close, like projects. It remembers which folders are open. |
+| [![Share Conversation Dialog](chat-layout/share-dialog/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/share-dialog/) | **[Share Conversation Dialog](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/share-dialog/)**<br>Share a chat with a link. Choose who can see it, whether to show your name, then copy the link with one click. |
+
 ## Coming next
 
-Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
+Agents and Tools, Voice and Media, Trust and Onboarding.
 
 ## License
 
