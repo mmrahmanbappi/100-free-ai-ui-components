@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+  Prompt with Slash Commands: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt with Slash Commands | Free AI UI Component</title>
+<meta name="description" content="Type a slash to open a command menu. Use the arrow keys to move, Enter to pick, and Escape to close.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.pb{width:min(100%,680px);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:10px 10px 10px 14px;transition:border-color .15s}
+.pb:focus-within{border-color:var(--accent)}
+.pb textarea{width:100%;border:0;outline:0;resize:none;background:none;min-height:24px;max-height:200px;line-height:1.5;padding:6px 0;color:var(--ink)}
+.pb textarea::placeholder{color:var(--muted)}
+.row{display:flex;align-items:center;gap:8px;min-width:0}
+.row>span{min-width:0}
+.sp{flex:1}
+.ib{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;border:0;background:none;color:var(--muted);cursor:pointer}
+.ib:hover{background:var(--surface-2);color:var(--ink)}
+.send{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;border:0;background:var(--accent);color:var(--accent-ink);cursor:pointer;transition:opacity .15s,transform .1s}
+.send:disabled{opacity:.35;cursor:not-allowed}
+.send:not(:disabled):active{transform:scale(.94)}
+.log{width:min(100%,680px);margin-bottom:12px;display:flex;flex-direction:column;gap:8px}
+.msg{align-self:flex-end;max-width:85%;background:var(--accent-soft);color:var(--ink);padding:9px 13px;border-radius:14px 14px 4px 14px;white-space:pre-wrap;word-wrap:break-word;animation:pop .2s ease}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
+.wrap{width:min(100%,680px);display:flex;flex-direction:column;align-items:stretch}
+.pb{position:relative}
+.menu{position:absolute;left:10px;right:10px;bottom:calc(100% + 8px);background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px;list-style:none;margin:0;max-height:min(210px,40vh);overflow:auto}
+.menu[hidden]{display:none}
+.menu li{display:flex;gap:10px;align-items:baseline;padding:8px 10px;border-radius:8px;cursor:pointer}
+.menu li b{color:var(--ink);font-family:var(--mono);font-size:13px;min-width:92px}
+.menu li span{color:var(--muted);font-size:13px}
+.menu li[aria-selected=true]{background:var(--accent-soft)}
+.menu .empty{color:var(--muted);font-size:13px;cursor:default}
+.hint{font-size:12px;color:var(--muted)}
+.hint kbd{font-family:var(--mono);background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:0 5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <form class="pb" id="f">
+    <ul class="menu" id="menu" role="listbox" aria-label="Commands" hidden></ul>
+    <label class="sr" for="q">Message</label>
+    <textarea id="q" rows="1" placeholder="Type / for commands" role="combobox" aria-controls="menu" aria-expanded="false" aria-autocomplete="list"></textarea>
+    <div class="row"><span class="hint">Press <kbd>/</kbd> for commands</span><span class="sp"></span><button class="send" id="s" type="submit" aria-label="Send message" disabled><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>
+  </form>
+</div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+function grow(t){t.style.height='auto';t.style.height=Math.min(t.scrollHeight,200)+'px'}
+function post(log,text){var m=document.createElement('div');m.className='msg';m.textContent=text;log.appendChild(m);}
+var CMDS=[['/summarize','Make a short summary'],['/translate','Translate to another language'],['/explain','Explain in simple words'],['/rewrite','Rewrite in a different tone'],['/table','Turn the answer into a table'],['/code','Answer with code only'],['/shorter','Make it shorter']];
+var q=document.getElementById('q'),menu=document.getElementById('menu'),s=document.getElementById('s'),sel=0,shown=[];
+function word(){var v=q.value.slice(0,q.selectionStart);var m=v.match(/(^|\s)(\/\w*)$/);return m?m[2]:null;}
+function render(){var w=word();if(w===null){menu.hidden=true;q.setAttribute('aria-expanded','false');return;}
+  shown=CMDS.filter(function(c){return c[0].indexOf(w.toLowerCase())===0;});sel=Math.min(sel,Math.max(shown.length-1,0));menu.innerHTML='';
+  if(!shown.length){menu.innerHTML='<li class="empty">No matching command</li>';}
+  shown.forEach(function(c,i){var li=document.createElement('li');li.setAttribute('role','option');li.id='o'+i;li.setAttribute('aria-selected',i===sel);
+    li.innerHTML='<b></b><span></span>';li.querySelector('b').textContent=c[0];li.querySelector('span').textContent=c[1];
+    li.onmousedown=function(e){e.preventDefault();pick(i);};menu.appendChild(li);});
+  menu.hidden=false;q.setAttribute('aria-expanded','true');if(shown.length)q.setAttribute('aria-activedescendant','o'+sel);}
+function pick(i){var c=shown[i];if(!c)return;var pos=q.selectionStart,before=q.value.slice(0,pos).replace(/\/\w*$/,c[0]+' ');q.value=before+q.value.slice(pos);q.selectionStart=q.selectionEnd=before.length;menu.hidden=true;q.setAttribute('aria-expanded','false');grow(q);s.disabled=!q.value.trim();q.focus();}
+q.addEventListener('input',function(){sel=0;grow(q);s.disabled=!q.value.trim();render();});
+q.addEventListener('keydown',function(e){if(!menu.hidden&&shown.length){
+  if(e.key==='ArrowDown'){e.preventDefault();sel=(sel+1)%shown.length;render();return;}
+  if(e.key==='ArrowUp'){e.preventDefault();sel=(sel-1+shown.length)%shown.length;render();return;}
+  if(e.key==='Enter'||e.key==='Tab'){e.preventDefault();pick(sel);return;}}
+  if(e.key==='Escape'){menu.hidden=true;q.setAttribute('aria-expanded','false');}});
+q.addEventListener('blur',function(){menu.hidden=true;});
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();q.value='';grow(q);s.disabled=true;});
+</script>
+</body>
+</html>
