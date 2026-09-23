@@ -6,7 +6,7 @@ The parts every AI app needs: prompt boxes, thinking animations, token meters, a
 
 **[See every component with a live demo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/)**
 
-70 of 100 components are ready. New ones are added every week.
+80 of 100 components are ready. New ones are added every week.
 
 ## Why use these components
 
@@ -146,9 +146,26 @@ Full chat windows, sidebars, widgets and empty states.
 | [![Sidebar with Pinned Chats and Folders](chat-layout/sidebar-folders/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/sidebar-folders/) | **[Sidebar with Pinned Chats and Folders](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/sidebar-folders/)**<br>A chat sidebar with a pinned section and folders you can open and close, like projects. It remembers which folders are open. |
 | [![Share Conversation Dialog](chat-layout/share-dialog/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/share-dialog/) | **[Share Conversation Dialog](https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/share-dialog/)**<br>Share a chat with a link. Choose who can see it, whether to show your name, then copy the link with one click. |
 
+### Agents and Tools
+
+Tool calls, approvals, task plans and logs for AI agents.
+
+| Preview | Component |
+|---|---|
+| [![Tool Call Card](agents/tool-call-card/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/tool-call-card/) | **[Tool Call Card](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/tool-call-card/)**<br>Shows that the AI used a tool, with its name, status and time. Open it to see the exact input and the result it got back. |
+| [![Action Approval Request](agents/approval-request/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/approval-request/) | **[Action Approval Request](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/approval-request/)**<br>Before an agent does something important, like sending an email, it shows exactly what it will do and waits for Allow or Deny. |
+| [![Editable Task Plan](agents/task-plan/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/task-plan/) | **[Editable Task Plan](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/task-plan/)**<br>The agent proposes a step by step plan before it starts. People can reorder, edit or remove steps, then approve the plan to run it. |
+| [![Agent Activity Timeline](agents/agent-timeline/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/agent-timeline/) | **[Agent Activity Timeline](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/agent-timeline/)**<br>A timeline of everything an agent did: its thinking, tool calls, results and messages, with times and a filter by type. |
+| [![File Change Preview](agents/file-diff/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/file-diff/) | **[File Change Preview](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/file-diff/)**<br>Shows the changes an AI wants to make to a file, with removed lines in red and added lines in green, and buttons to accept or reject. |
+| [![Web Results Card](agents/web-results-card/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/web-results-card/) | **[Web Results Card](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/web-results-card/)**<br>A card listing the web pages an AI read, with title, site and a short excerpt. Pages it used in the answer are marked. |
+| [![Agent Run Log](agents/run-log-console/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/run-log-console/) | **[Agent Run Log](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/run-log-console/)**<br>A terminal style log that streams what an agent is doing, with colored levels, a pause button, auto scroll and copy. |
+| [![Parallel Agents Status](agents/subagent-grid/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/subagent-grid/) | **[Parallel Agents Status](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/subagent-grid/)**<br>A grid of helper agents working at the same time, each with its own task, progress and status, and a button to stop any one of them. |
+| [![AI Memory Manager](agents/memory-panel/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/memory-panel/) | **[AI Memory Manager](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/memory-panel/)**<br>A list of things the assistant remembers about someone, with edit and delete for each item, a way to add one, and a switch to turn memory off. |
+| [![App Connectors List](agents/connectors-list/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/connectors-list/) | **[App Connectors List](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/connectors-list/)**<br>A list of apps the AI can connect to, like calendar, email and files. Each shows what it can access, with Connect and Disconnect buttons. |
+
 ## Coming next
 
-Agents and Tools, Voice and Media, Trust and Onboarding.
+Voice and Media, Trust and Onboarding.
 
 ## License
 

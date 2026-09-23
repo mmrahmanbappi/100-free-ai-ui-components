@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+  Agent Run Log: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Run Log | Free AI UI Component</title>
+<meta name="description" content="A terminal style log that streams what an agent is doing, with colored levels, a pause button, auto scroll and copy.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{width:min(100%,620px);display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.card h2{font-size:15px;margin:0 0 4px;color:var(--ink)}
+.muted{color:var(--muted);font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--accent)}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sm{padding:5px 10px;font-size:13px;border-radius:8px}
+.ib{width:28px;height:28px;display:grid;place-items:center;border:0;background:none;color:var(--muted);border-radius:7px;cursor:pointer;flex:none}
+.ib:hover{background:var(--surface-2);color:var(--ink)}.ib:disabled{opacity:.3;cursor:not-allowed}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;border-radius:99px;padding:2px 9px;border:1px solid}
+.pill.run{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.pill.ok{color:var(--good);border-color:color-mix(in srgb,var(--good) 40%,var(--line))}
+.pill.bad{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 40%,var(--line))}
+.pill.wait{color:var(--muted);border-color:var(--line)}
+pre{margin:0;font:12.5px/1.55 var(--mono);background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;overflow-x:auto;color:var(--ink)}
+.tg{width:40px;height:23px;border-radius:99px;background:var(--line);position:relative;flex:none;border:0;cursor:pointer;padding:0}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:17px;height:17px;border-radius:50%;background:#fff;transition:left .15s}
+.tg[aria-checked=true]{background:var(--accent)}.tg[aria-checked=true]::after{left:20px}
+.wrap{width:min(100%,700px)}
+.con{border-radius:12px;overflow:hidden;border:1px solid #2a2a33;background:#101015;color:#d9d9e3;box-shadow:var(--shadow)}
+.bar{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#18181f;border-bottom:1px solid #2a2a33;flex-wrap:wrap}
+.bar b{font-size:13px;color:#fff;margin-right:auto;display:flex;align-items:center;gap:8px}
+.live{width:8px;height:8px;border-radius:50%;background:#4ade80;animation:bl 1.2s ease infinite}.paused .live{background:#fbbf24;animation:none}
+@keyframes bl{50%{opacity:.3}}
+.bar button{border:1px solid #33333d;background:#202029;color:#e5e5ee;border-radius:7px;padding:4px 10px;font-size:12.5px;cursor:pointer}
+.bar button:hover{border-color:#8b8bff}.bar button[aria-pressed=true]{background:#2d2d5a;border-color:#8b8bff}
+.log{height:260px;overflow-y:auto;padding:10px 12px;font:12.5px/1.65 var(--mono);margin:0;list-style:none}
+.log li{white-space:pre-wrap;overflow-wrap:anywhere}.log time{color:#8a8a99;margin-right:8px}
+.INFO{color:#7dd3fc}.OK{color:#86efac}.WARN{color:#fcd34d}.ERR{color:#fca5a5}.lv{display:inline-block;width:44px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="con" id="con">
+  <div class="bar"><b><span class="live" aria-hidden="true"></span><span id="state">Running</span></b>
+    <button type="button" id="pause" aria-pressed="false">Pause</button><button type="button" id="auto" aria-pressed="true">Auto scroll</button><button type="button" id="copy">Copy</button><button type="button" id="clr">Clear</button></div>
+  <ol class="log" id="log" aria-label="Agent log" aria-live="off"></ol>
+</div></div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+var LINES=[['INFO','Starting task: build weekly sales report'],['INFO','Opening sales_week_38.csv'],['OK','Loaded 1,204 rows'],['INFO','Grouping sales by region'],['WARN','3 rows have no region, marking them as Unknown'],
+['OK','Created totals for 5 regions'],['INFO','Drawing bar chart'],['OK','Saved chart to report/week38.png'],['INFO','Writing summary'],['ERR','Could not reach email service, will retry in 5 seconds'],['OK','Email service is back'],['OK','Report sent to team@example.com']];
+var log=document.getElementById('log'),con=document.getElementById('con'),pause=document.getElementById('pause'),auto=document.getElementById('auto'),state=document.getElementById('state'),i=0,paused=false,timer=null;
+function stamp(){var d=new Date();return d.toTimeString().slice(0,8);}
+function push(){if(paused)return;if(i>=LINES.length){state.textContent='Finished';clearInterval(timer);con.classList.add('paused');return;}var l=LINES[i++],li=document.createElement('li');
+  li.innerHTML='<time></time><span class="lv '+l[0]+'"></span><span></span>';li.children[0].textContent=stamp();li.children[1].textContent=l[0];li.children[2].textContent=l[1];log.appendChild(li);
+  if(auto.getAttribute('aria-pressed')==='true')log.scrollTop=log.scrollHeight;}
+pause.addEventListener('click',function(){paused=!paused;pause.setAttribute('aria-pressed',paused);pause.textContent=paused?'Resume':'Pause';con.classList.toggle('paused',paused);if(i<LINES.length)state.textContent=paused?'Paused':'Running';});
+auto.addEventListener('click',function(){auto.setAttribute('aria-pressed',auto.getAttribute('aria-pressed')!=='true');});
+document.getElementById('clr').addEventListener('click',function(){log.innerHTML='';});
+document.getElementById('copy').addEventListener('click',function(){var t=log.innerText,b=this;function ok(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy';},1500);}
+  if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(t).then(ok,ok);else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}ta.remove();ok();}});
+push();timer=setInterval(push,700);
+</script>
+</body>
+</html>

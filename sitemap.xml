@@ -33,6 +33,10 @@
     <lastmod>2026-09-23</lastmod>
   </url>
   <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/</loc>
+    <lastmod>2026-09-23</lastmod>
+  </url>
+  <url>
     <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/basic-prompt-box/</loc>
     <lastmod>2026-09-23</lastmod>
     <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/basic-prompt-box/screenshot.png</image:loc></image:image>
@@ -381,5 +385,55 @@
     <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/share-dialog/</loc>
     <lastmod>2026-09-23</lastmod>
     <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/chat-layout/share-dialog/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/tool-call-card/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/tool-call-card/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/approval-request/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/approval-request/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/task-plan/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/task-plan/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/agent-timeline/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/agent-timeline/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/file-diff/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/file-diff/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/web-results-card/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/web-results-card/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/run-log-console/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/run-log-console/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/subagent-grid/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/subagent-grid/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/memory-panel/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/memory-panel/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/connectors-list/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/connectors-list/screenshot.png</image:loc></image:image>
   </url>
 </urlset>

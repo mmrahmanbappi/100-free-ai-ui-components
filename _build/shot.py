@@ -44,6 +44,11 @@ STAGE["floating-chat-widget"] = "document.getElementById('fab').click();document
 STAGE["chat-item-menu"] = "document.querySelectorAll('#list .ib')[1].click()"
 STAGE["share-dialog"] = "document.getElementById('open').click();var r=document.querySelector('input[value=link]');r.checked=true;r.dispatchEvent(new Event('change'));document.activeElement.blur()"
 STAGE["conversation-search"] = "var q=document.getElementById('q');q.value='plan';q.dispatchEvent(new Event('input'))"
+STAGE["tool-call-card"] = "document.getElementById('t1').open=true"
+STAGE["task-plan"] = "document.getElementById('go').click()"
+WAIT["task-plan"] = 1500
+WAIT["run-log-console"] = 3200
+WAIT["subagent-grid"] = 2200
 STAGE["ai-orb"] = "document.querySelector('[data-s=listen]').click()"
 
 
