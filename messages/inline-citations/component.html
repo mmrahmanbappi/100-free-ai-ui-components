@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+  Inline Citations: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inline Citations | Free AI UI Component</title>
+<meta name="description" content="Numbered source markers inside an answer. Hover or focus a number to see the source, and find the full list below.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{width:min(100%,660px);display:flex;flex-direction:column;gap:16px}
+.ai,.me{display:flex;gap:12px;align-items:flex-start}
+.me{flex-direction:row-reverse}
+.av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:none;font-size:13px;font-weight:700}
+.ai .av{background:var(--accent);color:var(--accent-ink)}.me .av{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.col{display:flex;flex-direction:column;gap:6px;min-width:0;max-width:calc(100% - 44px)}
+.me .col{align-items:flex-end}
+.bubble{background:var(--surface);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:11px 15px;color:var(--text);box-shadow:var(--shadow);min-width:0;overflow-wrap:anywhere}
+.me .bubble{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);border-radius:16px 4px 16px 16px;box-shadow:none}
+.meta{font-size:12px;color:var(--muted)}
+.tb{display:flex;gap:2px;align-items:center}
+.tb button{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:var(--muted);height:30px;min-width:30px;padding:0 7px;border-radius:8px;cursor:pointer;font-size:13px}
+.tb button:hover{background:var(--surface-2);color:var(--ink)}
+.cite{position:relative;display:inline-block}
+.cite>button{border:0;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;border-radius:6px;padding:0 5px;margin:0 1px;cursor:pointer;vertical-align:super;line-height:1.5}
+.pop{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);width:240px;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:10px 12px;font-size:13px;z-index:2;visibility:hidden;opacity:0;transition:opacity .15s}
+.cite:hover .pop,.cite:focus-within .pop{visibility:visible;opacity:1}
+.pop b{display:block;color:var(--ink)}.pop span{color:var(--muted);font-size:12px}
+.srcs{margin:12px 0 0;padding:10px 0 0;border-top:1px solid var(--line);list-style:none;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.srcs li{display:flex;gap:8px}.srcs .n{color:var(--accent);font-weight:700;min-width:16px}.srcs a{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="ai"><div class="av" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div><div class="col" style="flex:1"><div class="bubble" style="line-height:1.7">
+    Most adults need 7 to 9 hours of sleep a night<span class="cite"><button type="button" aria-describedby="p1">1</button><span class="pop" role="tooltip" id="p1"><b>Sleep Health Guide</b><span>sleepguide.example, updated 2026</span></span></span>.
+    Keeping the same wake-up time every day, even on weekends, helps the most<span class="cite"><button type="button" aria-describedby="p2">2</button><span class="pop" role="tooltip" id="p2"><b>Better Rest Study</b><span>health-journal.example, 2025</span></span></span>.
+    Screens right before bed can make it harder to fall asleep<span class="cite"><button type="button" aria-describedby="p3">3</button><span class="pop" role="tooltip" id="p3"><b>Evening Light and Sleep</b><span>science-daily.example, 2024</span></span></span>.
+    <ol class="srcs" aria-label="Sources">
+      <li><span class="n">1</span><a href="#">Sleep Health Guide</a></li>
+      <li><span class="n">2</span><a href="#">Better Rest Study</a></li>
+      <li><span class="n">3</span><a href="#">Evening Light and Sleep</a></li>
+    </ol>
+  </div></div></div>
+</div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+
+</script>
+</body>
+</html>

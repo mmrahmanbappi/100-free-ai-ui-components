@@ -13,6 +13,10 @@
     <lastmod>2026-09-23</lastmod>
   </url>
   <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/</loc>
+    <lastmod>2026-09-23</lastmod>
+  </url>
+  <url>
     <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/basic-prompt-box/</loc>
     <lastmod>2026-09-23</lastmod>
     <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/basic-prompt-box/screenshot.png</image:loc></image:image>
@@ -111,5 +115,55 @@
     <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/stop-generating/</loc>
     <lastmod>2026-09-23</lastmod>
     <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/stop-generating/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/chat-bubbles/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/chat-bubbles/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/formatted-answer/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/formatted-answer/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/code-block-copy/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/code-block-copy/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/message-actions/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/message-actions/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/answer-versions/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/answer-versions/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/inline-citations/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/inline-citations/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/edit-message/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/edit-message/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/error-retry/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/error-retry/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/file-message/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/file-message/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/long-message-toggle/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/long-message-toggle/screenshot.png</image:loc></image:image>
   </url>
 </urlset>

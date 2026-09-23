@@ -23,6 +23,10 @@ STAGE = {
 # How long to wait before the picture, so animated components are caught mid-way
 WAIT = {"streaming-text": 1900, "reasoning-panel": 2300, "agent-progress-steps": 2500, "status-spinner": 1700,
         "tool-call-indicator": 2100, "stop-generating": 2000, "thinking-shimmer": 700}
+STAGE["inline-citations"] = "document.querySelector('.cite button[aria-describedby=p2]').focus()"
+STAGE["edit-message"] = "document.getElementById('eb').click()"
+STAGE["answer-versions"] = "document.getElementById('re').click()"
+WAIT["answer-versions"] = 1000
 STAGE["ai-orb"] = "document.querySelector('[data-s=listen]').click()"
 
 

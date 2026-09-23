@@ -6,7 +6,7 @@ The parts every AI app needs: prompt boxes, thinking animations, token meters, a
 
 **[See every component with a live demo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/)**
 
-20 of 100 components are ready. New ones are added every week.
+30 of 100 components are ready. New ones are added every week.
 
 ## Why use these components
 
@@ -61,9 +61,26 @@ Animations and states that show the AI is working, streaming or using a tool.
 | [![Web Search Indicator](thinking/tool-call-indicator/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/tool-call-indicator/) | **[Web Search Indicator](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/tool-call-indicator/)**<br>Shows that the AI is searching the web, with sources popping in one by one, then a short summary of how many it found. |
 | [![Stop Generating Button](thinking/stop-generating/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/stop-generating/) | **[Stop Generating Button](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/stop-generating/)**<br>A stop button that appears while the answer is being written. Stopping keeps what was written and offers to continue or try again. |
 
+### Chat Messages
+
+Message bubbles, code blocks, sources and actions for AI answers.
+
+| Preview | Component |
+|---|---|
+| [![Chat Bubbles](messages/chat-bubbles/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/chat-bubbles/) | **[Chat Bubbles](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/chat-bubbles/)**<br>A simple conversation with user and assistant bubbles, avatars and times. The user sits on the right in the brand color. |
+| [![Formatted Answer](messages/formatted-answer/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/formatted-answer/) | **[Formatted Answer](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/formatted-answer/)**<br>A styled answer with headings, lists, bold text, inline code, a quote and a table, ready for text your AI returns as Markdown. |
+| [![Code Block with Copy Button](messages/code-block-copy/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/code-block-copy/) | **[Code Block with Copy Button](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/code-block-copy/)**<br>A code block with a language label, a copy button that confirms when done, and a button to wrap long lines. |
+| [![Message Action Bar](messages/message-actions/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/message-actions/) | **[Message Action Bar](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/message-actions/)**<br>A row of actions under an answer: copy the text, read it aloud with the browser voice, and share it. |
+| [![Answer Versions](messages/answer-versions/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/answer-versions/) | **[Answer Versions](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/answer-versions/)**<br>Regenerate an answer and move between versions with small arrows showing 1 of 3, like popular chat apps do. |
+| [![Inline Citations](messages/inline-citations/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/inline-citations/) | **[Inline Citations](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/inline-citations/)**<br>Numbered source markers inside an answer. Hover or focus a number to see the source, and find the full list below. |
+| [![Editable User Message](messages/edit-message/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/edit-message/) | **[Editable User Message](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/edit-message/)**<br>An edit button on the user message turns it into a text box with Save and Cancel, so people can fix a question and ask again. |
+| [![Error Message with Retry](messages/error-retry/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/error-retry/) | **[Error Message with Retry](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/error-retry/)**<br>A clear error in the chat when an answer fails, with a Retry button that shows progress and then the answer. |
+| [![Message with Attached Files](messages/file-message/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/file-message/) | **[Message with Attached Files](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/file-message/)**<br>A user message with attached file cards, showing the file type, name and size, followed by the assistant's reply. |
+| [![Long Answer with Show More](messages/long-message-toggle/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/long-message-toggle/) | **[Long Answer with Show More](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/long-message-toggle/)**<br>Long answers fold after a few lines with a soft fade and a Show more button, so the chat stays easy to scan. |
+
 ## Coming next
 
-Chat Messages, Answer Feedback, Tokens and Usage, Model and Settings, Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
+Answer Feedback, Tokens and Usage, Model and Settings, Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
 
 ## License
 
