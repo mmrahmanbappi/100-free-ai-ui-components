@@ -26,47 +26,84 @@ def cat(cid):
 
 
 CSS = """
-:root{--bg:#fafafb;--card:#fff;--ink:#17171c;--text:#34343e;--muted:#63636f;--line:#e5e5ea;--acc:#5b5bd6;--acc-soft:#ececfc;--code:#f4f4f7}
-@media (prefers-color-scheme:dark){:root{--bg:#111116;--card:#1a1a21;--ink:#f3f3f6;--text:#d6d6de;--muted:#9c9caa;--line:#2d2d37;--acc:#8b8bff;--acc-soft:#25254a;--code:#15151b}}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:1.05rem/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif}
-a{color:var(--acc);text-underline-offset:3px}:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:4px}
+:root{--bg:#eeeeea;--surface:#f6f6f2;--card:#fff;--ink:#171518;--text:#403b42;--muted:#5f5d61;--line:#d9d8d2;--acc:#b23a0a;--acc-ink:#fff;--acc-soft:#f6e3d9;--code:#f6f6f2;
+ --r:18px;--shadow:0 1px 2px rgba(23,21,24,.06),0 18px 40px -22px rgba(23,21,24,.28);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#141316;--surface:#1b1a1e;--card:#222126;--ink:#f2f1ed;--text:#d7d5d9;--muted:#a3a1a6;--line:#302f35;--acc:#ff7b4f;--acc-ink:#141316;--acc-soft:#3a2219;--code:#1b1a1e;
+ --shadow:0 1px 2px rgba(0,0,0,.4),0 18px 40px -22px rgba(0,0,0,.7);color-scheme:dark}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:1.02rem/1.6 "Inter",system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-underline-offset:3px}:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:6px}
 img{max-width:100%;height:auto;display:block}
-.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--ink);color:var(--bg);padding:.5rem 1rem;z-index:9}
-.wrap{max-width:76rem;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem}.narrow{max-width:48rem}
-header.top{border-bottom:1px solid var(--line)}header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;min-height:4rem}
-.brand{font-weight:800;color:var(--ink);text-decoration:none}.brand b{color:var(--acc)}
-header nav{display:flex;gap:1.3rem;flex-wrap:wrap;font-size:1rem}header nav a{color:var(--text);text-decoration:none}header nav a:hover{color:var(--acc)}
-h1,h2,h3{color:var(--ink);line-height:1.2;letter-spacing:-.015em}h1{font-size:clamp(2.1rem,5vw,3.4rem);margin:.3rem 0 1rem}h2{font-size:clamp(1.4rem,3vw,1.9rem);margin:0 0 1rem}h3{font-size:1.08rem;margin:0 0 .3rem}
-p{margin:0 0 1.1rem}.lead{font-size:1.2rem;max-width:44rem}.small{font-size:.95rem;color:var(--muted)}
-.hero{padding:3rem 0 2rem}.crumbs{font-size:.95rem;color:var(--muted);padding-top:1.4rem}.crumbs a{color:var(--muted)}
-.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.2rem 0 .4rem}
-.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.15rem;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid var(--ink);background:none;color:var(--ink);cursor:pointer;font-size:1rem}
-.btn.main{background:var(--ink);color:var(--bg)}.btn:hover{border-color:var(--acc)}
-.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0}
-.chips button,.chips a{font:inherit;font-size:.95rem;padding:.42rem .9rem;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;text-decoration:none}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--ink);color:var(--bg);padding:.5rem 1rem;z-index:9;border-radius:8px}
+.wrap{max-width:78rem;margin:0 auto;padding-left:1.5rem;padding-right:1.5rem}.narrow{max-width:52rem}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:4.4rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.brand i{width:2.1rem;height:2.1rem;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-style:normal;font-size:.75rem;font-weight:800;flex:none}
+header nav{display:flex;gap:1.6rem;align-items:center;font-size:.95rem}header nav a{color:var(--text);text-decoration:none}header nav a:hover{color:var(--ink)}
+header nav a.gh{border:1.5px solid var(--ink);border-radius:999px;padding:.4rem 1rem;color:var(--ink);font-weight:600}
+h1,h2,h3{color:var(--ink);line-height:1.05;letter-spacing:-.035em;font-weight:600}
+h1{font-size:clamp(2.4rem,4.6vw,4rem);font-weight:560;margin:.8rem 0 1rem}h2{font-size:clamp(1.8rem,3.4vw,2.7rem);margin:0 0 1rem}h3{font-size:1.12rem;letter-spacing:-.02em;margin:0 0 .3rem}
+p{margin:0 0 1.1rem}.lead{font-size:1.12rem;max-width:40rem}.small{font-size:.92rem;color:var(--muted)}
+.hero{padding:2.5rem 0 3rem}.crumbs{font-size:.9rem;color:var(--muted);padding-top:1.4rem}.crumbs a{color:var(--muted)}
+.actions{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin:1.2rem 0 .6rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.7rem 1.2rem;border-radius:999px;font-weight:600;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:none;cursor:pointer;font:inherit;font-size:.96rem;font-weight:600}
+.btn.main{background:var(--ink);color:var(--bg)}.btn:hover{opacity:.9}
+.btn .arr{width:2rem;height:2rem;border-radius:50%;background:var(--acc);color:var(--acc-ink);display:grid;place-items:center;margin:-.35rem -.8rem -.35rem 0}
+.badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.25rem .7rem .25rem .3rem}
+.badge b{background:var(--acc);color:var(--acc-ink);border-radius:999px;padding:.1rem .5rem}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin:0 0 .6rem}
+.hgrid{display:grid;grid-template-columns:1.05fr 1.2fr .95fr;gap:1.5rem;align-items:center;min-height:30rem}
+.stack{position:relative;height:28rem;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+.stack figure{position:absolute;margin:0;width:62%;aspect-ratio:16/10;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:var(--card);animation:float 7s ease-in-out infinite}
+.stack figure img{width:100%;height:100%;object-fit:cover}
+.stack figure:nth-child(1){left:2%;top:4%;transform:rotate(-7deg);animation-delay:-1s}.stack figure:nth-child(2){right:0;top:0;transform:rotate(5deg);animation-delay:-3s}
+.stack figure:nth-child(3){left:18%;top:26%;transform:rotate(-1deg);z-index:3;width:70%;animation-delay:-2s}.stack figure:nth-child(4){left:0;top:52%;transform:rotate(4deg);animation-delay:-4s}
+.stack figure:nth-child(5){right:2%;top:48%;transform:rotate(-5deg);animation-delay:-5s}.stack figure:nth-child(6){left:24%;top:70%;transform:rotate(2deg);animation-delay:-6s}
+@keyframes float{50%{translate:0 -8px}}
+.side{display:flex;flex-direction:column;gap:1.1rem}
+.cycle,.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.1rem}.cycle{box-shadow:var(--shadow)}
+.cycle .hd{display:flex;align-items:center;gap:.7rem}.cycle .hd i{width:2.3rem;height:2.3rem;border-radius:10px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:.72rem;flex:none}
+.cycle small{display:block;color:var(--muted);font-size:.78rem}.cycle strong{color:var(--ink);font-size:.95rem;display:block;min-height:1.5em;transition:opacity .35s}
+.cycle ul{list-style:none;margin:.8rem 0 0;padding:0 0 0 3rem;font-size:.9rem;display:flex;flex-direction:column;gap:.45rem}
+.cycle li:nth-child(1){opacity:.9}.cycle li:nth-child(2){opacity:.65}.cycle li:nth-child(3){opacity:.4}.cycle li:nth-child(4){opacity:.18}
+.stat{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}.stat small{color:var(--muted);font-size:.85rem}
+.stat b{display:block;font-size:2rem;color:var(--ink);letter-spacing:-.03em;line-height:1;text-align:right}.stat em{font-style:normal;font-size:.78rem;color:var(--acc);font-weight:600;display:block;text-align:right;margin-top:.35rem}
+.big{font-size:clamp(2rem,3.4vw,2.8rem);line-height:1.02;color:var(--ink);font-weight:560;letter-spacing:-.035em;margin:0}
+.facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.facts ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.facts li{padding:1.4rem 1rem;text-align:center;border-left:1px solid var(--line)}.facts li:first-child{border-left:0}
+.facts b{display:block;font-size:1.6rem;color:var(--ink);letter-spacing:-.02em}.facts span{font-size:.9rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 1.6rem}
+.chips button,.chips a{font:inherit;font-size:.9rem;padding:.4rem 1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer;text-decoration:none}
 .chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .grid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(17.5rem,1fr));gap:1.3rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;height:100%}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;height:100%;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .card img{aspect-ratio:16/10;object-fit:cover;width:100%;border-bottom:1px solid var(--line)}
-.card .in{padding:1rem 1.1rem 1.15rem;display:flex;flex-direction:column;gap:.3rem;flex:1}
-.card .cat{font-size:.85rem;color:var(--acc);font-weight:600;text-decoration:none}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{color:var(--acc)}
-.card p{font-size:.95rem;color:var(--muted);margin:0;flex:1}
-section.band{padding:3rem 0;border-top:1px solid var(--line)}section.band.alt{background:var(--card)}
+.card .in{padding:1.05rem 1.2rem 1.2rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.card .cat{font-size:.78rem;color:var(--acc);font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.06em}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{color:var(--acc)}
+.card p{font-size:.94rem;color:var(--text);margin:0;flex:1}
+section.band{padding:4.5rem 0}section.band.alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem;list-style:none;padding:0;margin:0}
-.cats li>*{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);text-decoration:none;color:inherit;height:100%}
-.cats a:hover{border-color:var(--acc)}.cats b{color:var(--ink)}.cats span{display:block;color:var(--muted);font-size:.95rem}.cats .soon{opacity:.65}
-details{border-bottom:1px solid var(--line);padding:1rem 0}summary{font-weight:700;color:var(--ink);cursor:pointer}details p{margin:.7rem 0 0}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}ul.ticks{padding-left:1.2rem}ul.ticks li{margin:.35rem 0}
-.stage{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
-.stage .bar{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;padding:.6rem .8rem;border-bottom:1px solid var(--line)}
-.seg{display:flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}.seg button{border:0;background:none;padding:.35rem .8rem;font:inherit;font-size:.9rem;color:var(--text);cursor:pointer}
-.seg button[aria-pressed=true]{background:var(--acc-soft);color:var(--ink);font-weight:700}
+.cats li>*{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:var(--r);background:var(--card);text-decoration:none;color:inherit;height:100%}
+.cats a:hover{border-color:var(--acc)}.cats b{color:var(--ink)}.cats span{display:block;color:var(--muted);font-size:.93rem}.cats .soon{opacity:.6}
+details{border-top:1px solid var(--line);padding:1.1rem 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{font-weight:650;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem}summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--acc)}details[open] summary::after{content:"-"}details p{margin:.7rem 0 0}
+.two{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem}ul.ticks{padding-left:1.2rem;margin:0}ul.ticks li{margin:.4rem 0}
+.stage{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card);box-shadow:var(--shadow)}
+.stage .bar{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;padding:.6rem .9rem;border-bottom:1px solid var(--line)}
+.seg{display:flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden}.seg button{border:0;background:none;padding:.35rem .9rem;font:inherit;font-size:.88rem;color:var(--text);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg);font-weight:600}
 .stage iframe{display:block;width:100%;height:480px;border:0;background:#fff}
-.code{position:relative;margin:1.2rem 0}.code pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;max-height:420px;overflow:auto;font:13px/1.55 ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;margin:0;white-space:pre}
-.code .copy{position:absolute;top:.6rem;right:.8rem}
-footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem}footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}footer p{margin:0}
-@media (max-width:860px){.two{grid-template-columns:1fr}.stage iframe{height:520px}}
+.code{position:relative;margin:1.2rem 0}.code pre{background:var(--code);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;max-height:420px;overflow:auto;font:13px/1.55 ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;margin:0;white-space:pre;color:var(--ink)}
+.code .copy{position:absolute;top:.6rem;right:.8rem;background:var(--card)}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.92rem}footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}footer p{margin:0}footer a{color:var(--ink)}
+@media (max-width:1060px){.hgrid{grid-template-columns:1fr 1fr}.hgrid .side{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;align-items:start}.hgrid .big{grid-column:1/-1}}
+@media (max-width:860px){.two{grid-template-columns:1fr}.stage iframe{height:520px}header nav a:not(.gh){display:none}}
+@media (max-width:760px){.hgrid{grid-template-columns:1fr;min-height:0}.stack{height:18rem;order:2}.hgrid .side{grid-template-columns:1fr;order:3}
+ .facts ul{grid-template-columns:repeat(2,1fr)}.facts li:nth-child(3){border-left:0}.facts li:nth-child(n+3){border-top:1px solid var(--line)}section.band{padding:3.2rem 0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 """
 
 
@@ -82,7 +119,7 @@ def shell(title, desc, path, og, schema, body, script="", ogtype="website"):
 <link rel="canonical" href="{url}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="MM Rahman Bappi">
-<meta name="theme-color" content="#5b5bd6">
+<meta name="theme-color" content="#eeeeea">
 <meta property="og:type" content="{ogtype}">
 <meta property="og:site_name" content="100 Free AI UI Components">
 <meta property="og:title" content="{esc(title)}">
@@ -97,6 +134,8 @@ def shell(title, desc, path, og, schema, body, script="", ogtype="website"):
 <meta name="twitter:image" content="{og}">
 <meta name="twitter:image:alt" content="{esc(title)}">
 <link rel="icon" href="{SITE}/_site/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="{SITE}/_site/site.css">
 <script type="application/ld+json">
 {json.dumps(schema, indent=1, ensure_ascii=False)}
@@ -104,12 +143,12 @@ def shell(title, desc, path, og, schema, body, script="", ogtype="website"):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top"><div class="wrap"><a class="brand" href="{SITE}/">100 Free <b>AI UI</b> Components</a>
-<nav aria-label="Main"><a href="{SITE}/#components">Components</a><a href="{SITE}/#categories">Categories</a><a href="{SITE}/#faq">FAQ</a><a href="{REPO}">GitHub</a></nav></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="{SITE}/"><i aria-hidden="true">AI</i>100 Free AI UI Components</a>
+<nav aria-label="Main"><a href="{SITE}/#components">Components</a><a href="{SITE}/#categories">Categories</a><a href="{SITE}/#faq">FAQ</a><a href="https://mmrahmanbappi.github.io/">All projects</a><a class="gh" href="{REPO}">GitHub</a></nav></div></header>
 <main id="main">
 {body}
 </main>
-<footer><div class="wrap"><p>Made by <a href="https://mmseo.app/">MM Rahman Bappi</a>. Free under the MIT license.</p><p><a href="{REPO}">Source on GitHub</a></p></div></footer>
+<footer><div class="wrap"><p>Made by <a href="https://mmrahmanbappi.github.io/">MM Rahman Bappi</a>. Free under the MIT license.</p><p><a href="{REPO}">Source on GitHub</a> &nbsp; <a href="https://mmrahmanbappi.github.io/">More free projects</a></p></div></footer>
 {('<script>' + script + '</script>') if script else ''}
 </body>
 </html>
@@ -159,7 +198,7 @@ def build():
     os.makedirs(os.path.join(ROOT, "_site"), exist_ok=True)
     open(os.path.join(ROOT, "_site", "site.css"), "w").write(CSS.strip() + "\n")
     open(os.path.join(ROOT, "_site", "favicon.svg"), "w").write(
-        "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='#5b5bd6'/>"
+        "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='32' fill='#171518'/>"
         "<path d='M32 12l4.5 15.5L52 32l-15.5 4.5L32 52l-4.5-15.5L12 32l15.5-4.5z' fill='white'/></svg>\n")
     shot = lambda c: os.path.join(ROOT, c["category"], c["slug"], "screenshot.png")
     n = len(COMPS)
@@ -266,13 +305,26 @@ sb.forEach(function(x){x.setAttribute('aria-pressed',x===b)});pv.src='component.
     cats = "".join((f'<li><a href="{SITE}/{c[0]}/"><b>{esc(c[1])}</b><span>{esc(c[2])}</span></a></li>' if c in BUILT
                     else f'<li><div class="soon"><b>{esc(c[1])}</b><span>{esc(c[2])} Coming soon.</span></div></li>') for c in CATEGORIES)
     status = "All 100 components are ready." if n >= 100 else f"{n} of 100 components are ready. New ones are added every week."
-    body = f"""<section class="hero"><div class="wrap">
-<h1>Free AI UI components</h1>
-<p class="lead">The parts every AI app needs: a prompt box, a thinking state, a token meter, a way to rate answers. Each component is one HTML file you can copy into any project. No library, no build step.</p>
-<div class="actions"><a class="btn main" href="#components">Browse components</a><a class="btn" href="{REPO}">Get the code on GitHub</a></div>
-<p class="small">{status} Free for personal and business use.</p>
+    PREFER = ["image-generation-progress", "usage-chart", "split-view-chat", "model-cards", "agent-timeline", "ai-orb"]
+    picks = [x for s_ in PREFER for x in COMPS if x["slug"] == s_][:6]
+    picks += [x for x in COMPS if x not in picks][:6 - len(picks)]
+    ARR = '<span class="arr" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>'
+    cyc = [c[1] + " components" for c in BUILT]
+    body = f"""<section class="hero"><div class="wrap hgrid">
+<div><span class="badge"><b>Free</b>AI UI components</span>
+<h1>The interface every AI app needs</h1>
+<p class="lead">Prompt boxes, thinking states, token meters, answer ratings and agent tools. Each component is one HTML file you can copy into any project. No library, no build step.</p>
+<div class="actions"><a class="btn main" href="#components">Browse components{ARR}</a><a class="btn" href="{REPO}">GitHub</a></div>
+<p class="small">{status} Free for personal and business use.</p></div>
+<div class="stack" aria-hidden="true">{"".join(f'<figure><img src="{url_of(x)}thumb.webp" alt="" width="640" height="400"></figure>' for x in picks)}</div>
+<div class="side"><div class="cycle"><div class="hd"><i aria-hidden="true">AI</i><div><small>Now in the collection</small><strong id="cur">{esc(cyc[0])}</strong></div></div>
+<ul id="nx" aria-hidden="true">{"".join(f"<li>{esc(c)}</li>" for c in cyc[1:5])}</ul></div>
+<div class="stat"><small>Free components<br>ready to copy</small><div><b>{n}</b><em>{len(BUILT)} categories</em></div></div>
+<p class="big">Copy. Paste. Ship.</p></div>
 </div></section>
-<section class="band alt" id="components"><div class="wrap"><h2>All components</h2>
+<div class="facts"><div class="wrap"><ul><li><b>{n}</b><span>components</span></li><li><b>1</b><span>file each</span></li><li><b>0</b><span>libraries needed</span></li><li><b>MIT</b><span>license</span></li></ul></div></div>
+"""
+    body += f"""<section class="band alt" id="components"><div class="wrap"><h2>All components</h2>
 <p>Open a component to try the live demo, switch between light and dark mode, and copy the code.</p>
 <div class="chips" role="group" aria-label="Filter by category">{chips}</div>
 <ul class="grid" id="grid">{"".join(card(x) for x in COMPS)}</ul></div></section>
@@ -282,7 +334,7 @@ sb.forEach(function(x){x.setAttribute('aria-pressed',x===b)});pv.src='component.
 <div><h2>Every component includes</h2><ul class="ticks"><li>Plain HTML, CSS and JavaScript in one file</li><li>Light and dark mode</li><li>Keyboard support and screen reader labels</li><li>A layout that fits phones</li><li>Brand colors you can change in one line</li></ul></div>
 </div></section>
 <section class="band" id="faq"><div class="wrap narrow"><h2>Questions</h2>{"".join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in FAQ)}</div></section>"""
-    script = """var b=[].slice.call(document.querySelectorAll('.chips button')),c=[].slice.call(document.querySelectorAll('#grid .card'));
+    script = ("(function(){var items=" + json.dumps(cyc) + ",cur=document.getElementById('cur'),nx=document.getElementById('nx'),i=0;if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(function(){i=(i+1)%items.length;cur.style.opacity=0;setTimeout(function(){cur.textContent=items[i];cur.style.opacity=1;nx.innerHTML='';for(var k=1;k<5;k++){var li=document.createElement('li');li.textContent=items[(i+k)%items.length];nx.appendChild(li);}},350);},2600);})();\n") + """var b=[].slice.call(document.querySelectorAll('.chips button')),c=[].slice.call(document.querySelectorAll('#grid .card'));
 b.forEach(function(x){x.addEventListener('click',function(){b.forEach(function(y){y.setAttribute('aria-pressed',y===x)});var f=x.dataset.f;c.forEach(function(k){k.hidden=f!=='all'&&k.dataset.cat!==f})})});"""
     open(os.path.join(ROOT, "index.html"), "w").write(shell(title, desc, "/", SITE + "/_site/og-home.jpg", schema, body, script))
 
