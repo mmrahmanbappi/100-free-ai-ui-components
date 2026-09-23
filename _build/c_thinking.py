@@ -230,12 +230,12 @@ add(C, "stop-generating", "Stop Generating Button",
   </div>
 </div>""", """
 var TEXT="Here are five ways to save on groceries. First, plan meals for the week before you shop. Second, buy store brands for basics like rice, flour and pasta. Third, check the reduced shelf in the evening. Fourth, cook bigger batches and freeze portions. Fifth, keep a running list on your phone so you only buy what you need.";
-var o=document.getElementById('o'),c=document.getElementById('c'),n=document.getElementById('n'),stop=document.getElementById('stop'),cont=document.getElementById('cont'),again=document.getElementById('again');
+var o=document.getElementById('o'),c=document.getElementById('c'),n=document.getElementById('n'),stopBtn=document.getElementById('stop'),cont=document.getElementById('cont'),again=document.getElementById('again');
 var words=TEXT.split(' '),i=0,t=null;
-function ui(state){stop.hidden=state!=='run';cont.hidden=state!=='stopped';again.hidden=state==='run';c.hidden=state!=='run';n.hidden=state!=='stopped';}
+function ui(state){stopBtn.hidden=state!=='run';cont.hidden=state!=='stopped';again.hidden=state==='run';c.hidden=state!=='run';n.hidden=state!=='stopped';}
 function step(){if(i>=words.length){ui('done');return;}o.textContent+=(i?' ':'')+words[i++];t=setTimeout(step,55+Math.random()*60);}
-function start(reset,byUser){clearTimeout(t);if(reset){o.textContent='';i=0;}ui('run');step();if(byUser)stop.focus();}
-stop.addEventListener('click',function(){clearTimeout(t);ui('stopped');cont.focus();});
+function start(reset,byUser){clearTimeout(t);if(reset){o.textContent='';i=0;}ui('run');step();if(byUser)stopBtn.focus();}
+stopBtn.addEventListener('click',function(){clearTimeout(t);ui('stopped');cont.focus();});
 cont.addEventListener('click',function(){start(false,true);});
 again.addEventListener('click',function(){start(true,true);});
 start(true);""")

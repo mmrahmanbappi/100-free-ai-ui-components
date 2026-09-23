@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+  AI Error States: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Error States | Free AI UI Component</title>
+<meta name="description" content="Friendly error screens for common AI problems: no internet, the service is busy, and a message that is too long. Each says what to do next.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+a{color:var(--ink);font-weight:600}
+.wrap{width:min(100%,600px);display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+.card h2{font-size:15.5px;margin:0 0 4px;color:var(--ink)}
+.muted{color:var(--muted);font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--accent)}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.ib{width:30px;height:30px;display:grid;place-items:center;border:0;background:none;color:var(--muted);border-radius:8px;cursor:pointer}.ib:hover{background:var(--surface-2);color:var(--ink)}
+kbd{font:600 12px var(--mono);background:var(--surface-2);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 7px;color:var(--ink)}
+dialog{border:0;border-radius:18px;padding:0;background:var(--surface);color:var(--text);box-shadow:0 30px 80px -20px rgba(0,0,0,.5);width:min(92vw,460px)}
+dialog::backdrop{background:rgba(10,10,20,.45)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.tabs button{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.st{text-align:center;padding:26px 22px}
+.st .ic{width:60px;height:60px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;background:var(--surface-2);color:var(--ink)}
+.st h2{font-size:18px}.st p{margin:6px auto 16px;max-width:380px;font-size:14px}
+.st .acts{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--accent);animation:sp .8s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tabs" role="tablist" aria-label="Error type"><button role="tab" aria-selected="true" data-k="offline">Offline</button><button role="tab" aria-selected="false" data-k="busy">Service busy</button><button role="tab" aria-selected="false" data-k="long">Message too long</button></div>
+  <div class="card st" id="st" role="tabpanel" aria-live="polite"></div>
+</div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+var S={offline:['<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 8.5a15 15 0 0120 0M5 12a10 10 0 0114 0M8.5 15.5a5 5 0 017 0M12 19h.01M3 3l18 18"/></svg>','You are offline','Your message is saved. It will send as soon as you are back online.','Try again','View saved message'],
+busy:['<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>','The service is busy right now','Many people are using the assistant. Please wait a moment and try again.','Try again','Check service status'],
+long:['<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 4h10l4 4v12H5z"/><path d="M9 12h6M9 16h4"/></svg>','Your message is too long','Your message is about 14,000 words. Shorten it, or split it into parts and send them one by one.','Shorten it for me','Split into parts']};
+var st=document.getElementById('st'),tabs=[].slice.call(document.querySelectorAll('.tabs button'));
+function show(k){var s=S[k];tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.k===k);});
+  st.innerHTML='<div class="ic">'+s[0]+'</div><h2></h2><p class="muted"></p><div class="acts"><button class="btn pri" type="button" id="a1"></button><button class="btn" type="button"></button></div>';
+  st.querySelector('h2').textContent=s[1];st.querySelector('p').textContent=s[2];var b=st.querySelectorAll('button');b[0].textContent=s[3];b[1].textContent=s[4];
+  b[0].onclick=function(){b[0].disabled=true;b[0].innerHTML='<span class="spin" aria-hidden="true"></span>Working';setTimeout(function(){st.innerHTML='<h2>All set</h2><p class="muted">That worked. You can keep chatting.</p>';},1100);};}
+tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.k);});});show('offline');
+</script>
+</body>
+</html>

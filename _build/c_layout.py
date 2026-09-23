@@ -261,24 +261,24 @@ li input{flex:1;border:1px solid var(--accent);border-radius:7px;padding:6px 8px
 var items=[{t:'Party planning',p:false},{t:'Email to my landlord',p:false},{t:'Explain compound interest',p:false},{t:'Trip to Lisbon',p:true},{t:'Weekly meal plan',p:false}];
 var list=document.getElementById('list'),undo=document.getElementById('undo'),ut=document.getElementById('ut'),last=null,timer=null,openMenu=null;
 var PIN='"""+I['pin'].replace('"', '\\"')+"""',DOTS='"""+I['dots'].replace('"', '\\"')+"""';
-function close(){if(openMenu){openMenu.remove();openMenu=null;}}
-function render(){close();list.innerHTML='';items.slice().sort(function(a,b){return b.p-a.p;}).forEach(function(it){var li=document.createElement('li');
+function closeMenu(){if(openMenu){openMenu.remove();openMenu=null;}}
+function render(){closeMenu();list.innerHTML='';items.slice().sort(function(a,b){return b.p-a.p;}).forEach(function(it){var li=document.createElement('li');
   li.innerHTML=(it.p?'<span class="pin" title="Pinned">'+PIN+'</span>':'')+'<a href="#"></a><button class="ib" type="button" aria-haspopup="menu" aria-expanded="false">'+DOTS+'</button>';
   li.querySelector('a').textContent=it.t;var mb=li.querySelector('.ib');mb.setAttribute('aria-label','Options for '+it.t);
-  mb.addEventListener('click',function(e){e.stopPropagation();var was=openMenu&&openMenu.parentNode===li;close();if(was)return;
+  mb.addEventListener('click',function(e){e.stopPropagation();var was=openMenu&&openMenu.parentNode===li;closeMenu();if(was)return;
     var m=document.createElement('ul');m.className='menu';m.setAttribute('role','menu');
     [['Rename',rename],[it.p?'Unpin':'Pin to top',function(){it.p=!it.p;render();}],['Delete',del]].forEach(function(o,i){var b=document.createElement('button');b.type='button';b.setAttribute('role','menuitem');b.textContent=o[0];if(o[0]==='Delete')b.className='del';
-      b.addEventListener('click',function(){close();o[1]();});var l=document.createElement('li');l.setAttribute('role','none');l.appendChild(b);m.appendChild(l);});
+      b.addEventListener('click',function(){closeMenu();o[1]();});var l=document.createElement('li');l.setAttribute('role','none');l.appendChild(b);m.appendChild(l);});
     li.appendChild(m);openMenu=m;mb.setAttribute('aria-expanded','true');m.querySelector('button').focus();
     m.addEventListener('keydown',function(ev){var bs=[].slice.call(m.querySelectorAll('button')),k=bs.indexOf(document.activeElement);
-      if(ev.key==='ArrowDown'){ev.preventDefault();bs[(k+1)%bs.length].focus();}if(ev.key==='ArrowUp'){ev.preventDefault();bs[(k-1+bs.length)%bs.length].focus();}if(ev.key==='Escape'){close();mb.setAttribute('aria-expanded','false');mb.focus();}});});
+      if(ev.key==='ArrowDown'){ev.preventDefault();bs[(k+1)%bs.length].focus();}if(ev.key==='ArrowUp'){ev.preventDefault();bs[(k-1+bs.length)%bs.length].focus();}if(ev.key==='Escape'){closeMenu();mb.setAttribute('aria-expanded','false');mb.focus();}});});
   function rename(){var a=li.querySelector('a'),inp=document.createElement('input');inp.value=it.t;inp.setAttribute('aria-label','Chat name');li.replaceChild(inp,a);inp.focus();inp.select();
     function done(save){if(save&&inp.value.trim())it.t=inp.value.trim();render();}
     inp.addEventListener('keydown',function(ev){if(ev.key==='Enter')done(true);if(ev.key==='Escape')done(false);});inp.addEventListener('blur',function(){done(true);});}
   function del(){var i=items.indexOf(it);last={it:it,i:i};items.splice(i,1);render();ut.textContent='"'+it.t+'" deleted';undo.hidden=false;clearTimeout(timer);timer=setTimeout(function(){undo.hidden=true;last=null;},5000);}
   list.appendChild(li);});}
 document.getElementById('ub').addEventListener('click',function(){if(!last)return;items.splice(last.i,0,last.it);last=null;undo.hidden=true;render();});
-document.addEventListener('click',close);render();""")
+document.addEventListener('click',closeMenu);render();""")
 
 add(C, "sidebar-folders", "Sidebar with Pinned Chats and Folders",
     "A chat sidebar with a pinned section and folders you can open and close, like projects. It remembers which folders are open.",

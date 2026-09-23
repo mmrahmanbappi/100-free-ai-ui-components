@@ -6,7 +6,7 @@ The parts every AI app needs: prompt boxes, thinking animations, token meters, a
 
 **[See every component with a live demo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/)**
 
-90 of 100 components are ready. New ones are added every week.
+All 100 components are ready.
 
 ## Why use these components
 
@@ -180,9 +180,22 @@ Voice input, audio answers, image upload and generation progress.
 | [![Image Prompt Builder](voice-media/image-prompt-editor/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/image-prompt-editor/) | **[Image Prompt Builder](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/image-prompt-editor/)**<br>Write a prompt for an image and pick a style, shape and number of images. A frame shows the chosen shape, and the final prompt updates live. |
 | [![Image Generation Progress](voice-media/image-generation-progress/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/image-generation-progress/) | **[Image Generation Progress](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/image-generation-progress/)**<br>Shows images being created: tiles start blurry and sharpen as progress grows, with a cancel button, then download and upscale actions. |
 
-## Coming next
+### Trust and Onboarding
 
-Trust and Onboarding.
+Labels, notices, tips and error states that help people trust the AI.
+
+| Preview | Component |
+|---|---|
+| [![AI-Generated Label](trust/ai-generated-label/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/ai-generated-label/) | **[AI-Generated Label](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/ai-generated-label/)**<br>A clear label that marks text or images made by AI. Hover or focus it to see how it was made and what to check. |
+| [![AI Disclaimer Banner](trust/ai-disclaimer-banner/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/ai-disclaimer-banner/) | **[AI Disclaimer Banner](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/ai-disclaimer-banner/)**<br>A short, honest notice that the assistant can make mistakes, with a link to learn more. It can be closed and remembers that choice. |
+| [![Onboarding Tour](trust/onboarding-tour/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/onboarding-tour/) | **[Onboarding Tour](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/onboarding-tour/)**<br>A step by step tour that points at parts of the app with short tips. People can go back, skip, or use the arrow keys. |
+| [![Prompt Tips Card](trust/prompt-tips/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/prompt-tips/) | **[Prompt Tips Card](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/prompt-tips/)**<br>Tips for writing better prompts, each with a weak and a stronger example side by side. Flip through them with the arrows. |
+| [![Keyboard Shortcuts Panel](trust/keyboard-shortcuts/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/keyboard-shortcuts/) | **[Keyboard Shortcuts Panel](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/keyboard-shortcuts/)**<br>A panel of keyboard shortcuts that opens with the question mark key, with a search box and keys grouped by task. |
+| [![AI Error States](trust/error-states/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/error-states/) | **[AI Error States](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/error-states/)**<br>Friendly error screens for common AI problems: no internet, the service is busy, and a message that is too long. Each says what to do next. |
+| [![Sensitive Content Notice](trust/content-warning/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/content-warning/) | **[Sensitive Content Notice](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/content-warning/)**<br>Hides an answer about a sensitive topic behind a calm notice, with a clear choice to show it and a link to real help. |
+| [![Fact Check Panel](trust/fact-check-panel/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/fact-check-panel/) | **[Fact Check Panel](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/fact-check-panel/)**<br>Shows how each claim in an answer was checked: supported by sources, not found, or conflicting. Open a claim to see the sources. |
+| [![What's New Dialog](trust/whats-new-dialog/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/whats-new-dialog/) | **[What's New Dialog](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/whats-new-dialog/)**<br>A short dialog that introduces new features, with a few slides, Beta labels and a way to send feedback. It shows once per version. |
+| [![First Run Consent](trust/first-run-consent/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/first-run-consent/) | **[First Run Consent](https://mmrahmanbappi.github.io/100-free-ai-ui-components/trust/first-run-consent/)**<br>A clear welcome step before first use that explains how data is used in plain words. People must agree to the terms, and training is a separate, optional choice. |
 
 ## License
 

@@ -86,12 +86,12 @@ var T={tutor:'You are a patient tutor. Explain ideas step by step using simple w
 editor:'You are a strict editor. Point out unclear sentences, repeated words and weak verbs. Suggest a shorter version of each paragraph.',
 brief:'Answer in three sentences or fewer. Use plain words. Skip greetings and summaries.'};
 var saved='Be friendly and clear. Use short paragraphs. When you are not sure, say so.',ta=document.getElementById('ta'),st=document.getElementById('st'),sv=document.getElementById('sv'),tpl=document.getElementById('tpl');
-function status(msg,cls){var n=ta.value.length;st.innerHTML=n.toLocaleString()+' / 1,500'+(msg?' <span class="'+cls+'">'+msg+'</span>':'');}
-function check(){var dirty=ta.value!==saved;sv.disabled=!dirty;status(dirty?'Unsaved changes':'','dirty');}
+function showStatus(msg,cls){var n=ta.value.length;st.innerHTML=n.toLocaleString()+' / 1,500'+(msg?' <span class="'+cls+'">'+msg+'</span>':'');}
+function check(){var dirty=ta.value!==saved;sv.disabled=!dirty;showStatus(dirty?'Unsaved changes':'','dirty');}
 ta.addEventListener('input',check);
 tpl.addEventListener('change',function(){if(!tpl.value)return;ta.value=T[tpl.value];tpl.value='';check();ta.focus();});
 document.getElementById('rs').addEventListener('click',function(){ta.value=saved;check();});
-sv.addEventListener('click',function(){saved=ta.value;sv.disabled=true;status('Saved','saved');});
+sv.addEventListener('click',function(){saved=ta.value;sv.disabled=true;showStatus('Saved','saved');});
 window.addEventListener('beforeunload',function(e){if(ta.value!==saved){e.preventDefault();e.returnValue='';}});
 ta.value=saved;check();
 </script>

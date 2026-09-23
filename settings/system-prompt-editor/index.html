@@ -233,12 +233,12 @@ var T={tutor:&#x27;You are a patient tutor. Explain ideas step by step using sim
 editor:&#x27;You are a strict editor. Point out unclear sentences, repeated words and weak verbs. Suggest a shorter version of each paragraph.&#x27;,
 brief:&#x27;Answer in three sentences or fewer. Use plain words. Skip greetings and summaries.&#x27;};
 var saved=&#x27;Be friendly and clear. Use short paragraphs. When you are not sure, say so.&#x27;,ta=document.getElementById(&#x27;ta&#x27;),st=document.getElementById(&#x27;st&#x27;),sv=document.getElementById(&#x27;sv&#x27;),tpl=document.getElementById(&#x27;tpl&#x27;);
-function status(msg,cls){var n=ta.value.length;st.innerHTML=n.toLocaleString()+&#x27; / 1,500&#x27;+(msg?&#x27; &lt;span class=&quot;&#x27;+cls+&#x27;&quot;&gt;&#x27;+msg+&#x27;&lt;/span&gt;&#x27;:&#x27;&#x27;);}
-function check(){var dirty=ta.value!==saved;sv.disabled=!dirty;status(dirty?&#x27;Unsaved changes&#x27;:&#x27;&#x27;,&#x27;dirty&#x27;);}
+function showStatus(msg,cls){var n=ta.value.length;st.innerHTML=n.toLocaleString()+&#x27; / 1,500&#x27;+(msg?&#x27; &lt;span class=&quot;&#x27;+cls+&#x27;&quot;&gt;&#x27;+msg+&#x27;&lt;/span&gt;&#x27;:&#x27;&#x27;);}
+function check(){var dirty=ta.value!==saved;sv.disabled=!dirty;showStatus(dirty?&#x27;Unsaved changes&#x27;:&#x27;&#x27;,&#x27;dirty&#x27;);}
 ta.addEventListener(&#x27;input&#x27;,check);
 tpl.addEventListener(&#x27;change&#x27;,function(){if(!tpl.value)return;ta.value=T[tpl.value];tpl.value=&#x27;&#x27;;check();ta.focus();});
 document.getElementById(&#x27;rs&#x27;).addEventListener(&#x27;click&#x27;,function(){ta.value=saved;check();});
-sv.addEventListener(&#x27;click&#x27;,function(){saved=ta.value;sv.disabled=true;status(&#x27;Saved&#x27;,&#x27;saved&#x27;);});
+sv.addEventListener(&#x27;click&#x27;,function(){saved=ta.value;sv.disabled=true;showStatus(&#x27;Saved&#x27;,&#x27;saved&#x27;);});
 window.addEventListener(&#x27;beforeunload&#x27;,function(e){if(ta.value!==saved){e.preventDefault();e.returnValue=&#x27;&#x27;;}});
 ta.value=saved;check();
 &lt;/script&gt;

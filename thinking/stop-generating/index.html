@@ -219,12 +219,12 @@ button,input,textarea,select{font:inherit;color:inherit}
 // Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
 (function(){var t=new URLSearchParams(location.search).get(&#x27;theme&#x27;);if(t)document.documentElement.dataset.theme=t;})();
 var TEXT=&quot;Here are five ways to save on groceries. First, plan meals for the week before you shop. Second, buy store brands for basics like rice, flour and pasta. Third, check the reduced shelf in the evening. Fourth, cook bigger batches and freeze portions. Fifth, keep a running list on your phone so you only buy what you need.&quot;;
-var o=document.getElementById(&#x27;o&#x27;),c=document.getElementById(&#x27;c&#x27;),n=document.getElementById(&#x27;n&#x27;),stop=document.getElementById(&#x27;stop&#x27;),cont=document.getElementById(&#x27;cont&#x27;),again=document.getElementById(&#x27;again&#x27;);
+var o=document.getElementById(&#x27;o&#x27;),c=document.getElementById(&#x27;c&#x27;),n=document.getElementById(&#x27;n&#x27;),stopBtn=document.getElementById(&#x27;stop&#x27;),cont=document.getElementById(&#x27;cont&#x27;),again=document.getElementById(&#x27;again&#x27;);
 var words=TEXT.split(&#x27; &#x27;),i=0,t=null;
-function ui(state){stop.hidden=state!==&#x27;run&#x27;;cont.hidden=state!==&#x27;stopped&#x27;;again.hidden=state===&#x27;run&#x27;;c.hidden=state!==&#x27;run&#x27;;n.hidden=state!==&#x27;stopped&#x27;;}
+function ui(state){stopBtn.hidden=state!==&#x27;run&#x27;;cont.hidden=state!==&#x27;stopped&#x27;;again.hidden=state===&#x27;run&#x27;;c.hidden=state!==&#x27;run&#x27;;n.hidden=state!==&#x27;stopped&#x27;;}
 function step(){if(i&gt;=words.length){ui(&#x27;done&#x27;);return;}o.textContent+=(i?&#x27; &#x27;:&#x27;&#x27;)+words[i++];t=setTimeout(step,55+Math.random()*60);}
-function start(reset,byUser){clearTimeout(t);if(reset){o.textContent=&#x27;&#x27;;i=0;}ui(&#x27;run&#x27;);step();if(byUser)stop.focus();}
-stop.addEventListener(&#x27;click&#x27;,function(){clearTimeout(t);ui(&#x27;stopped&#x27;);cont.focus();});
+function start(reset,byUser){clearTimeout(t);if(reset){o.textContent=&#x27;&#x27;;i=0;}ui(&#x27;run&#x27;);step();if(byUser)stopBtn.focus();}
+stopBtn.addEventListener(&#x27;click&#x27;,function(){clearTimeout(t);ui(&#x27;stopped&#x27;);cont.focus();});
 cont.addEventListener(&#x27;click&#x27;,function(){start(false,true);});
 again.addEventListener(&#x27;click&#x27;,function(){start(true,true);});
 start(true);

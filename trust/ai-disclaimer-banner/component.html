@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+  AI Disclaimer Banner: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Disclaimer Banner | Free AI UI Component</title>
+<meta name="description" content="A short, honest notice that the assistant can make mistakes, with a link to learn more. It can be closed and remembers that choice.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+a{color:var(--ink);font-weight:600}
+.wrap{width:min(100%,600px);display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+.card h2{font-size:15.5px;margin:0 0 4px;color:var(--ink)}
+.muted{color:var(--muted);font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--accent)}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.ib{width:30px;height:30px;display:grid;place-items:center;border:0;background:none;color:var(--muted);border-radius:8px;cursor:pointer}.ib:hover{background:var(--surface-2);color:var(--ink)}
+kbd{font:600 12px var(--mono);background:var(--surface-2);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 7px;color:var(--ink)}
+dialog{border:0;border-radius:18px;padding:0;background:var(--surface);color:var(--text);box-shadow:0 30px 80px -20px rgba(0,0,0,.5);width:min(92vw,460px)}
+dialog::backdrop{background:rgba(10,10,20,.45)}
+.ban{display:flex;gap:12px;align-items:flex-start;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:11px 12px 11px 14px;font-size:14px;color:var(--text)}
+.ban svg{color:var(--accent);flex:none;margin-top:2px}.ban p{margin:0;flex:1}.ban a{color:var(--ink);font-weight:600}
+.foot{text-align:center;font-size:12px;color:var(--muted);margin:0}
+.pb{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;color:var(--muted);box-shadow:var(--shadow)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="ban" id="ban" role="note"><span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.5"/></svg></span><p>The assistant can make mistakes. Check important information, like dates, prices and medical or legal advice. <a href="#">How we use AI</a></p><button class="ib" id="x" type="button" aria-label="Close notice"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="pb">Ask anything</div>
+  <p class="foot">Answers are generated by AI and may be inaccurate.</p>
+  <button class="btn" id="again" type="button" style="align-self:center" hidden>Show the notice again</button>
+</div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+var ban=document.getElementById('ban'),again=document.getElementById('again'),KEY='ai-notice-closed',wasClosed=false;
+// Remember the choice for this visit. Use localStorage in your app to keep it longer.
+try{wasClosed=sessionStorage.getItem(KEY)==='1';}catch(e){}
+function show(v){ban.hidden=!v;again.hidden=v;}
+document.getElementById('x').addEventListener('click',function(){show(false);try{sessionStorage.setItem(KEY,'1');}catch(e){}again.focus();});
+again.addEventListener('click',function(){show(true);try{sessionStorage.removeItem(KEY);}catch(e){}});
+show(!wasClosed);
+</script>
+</body>
+</html>

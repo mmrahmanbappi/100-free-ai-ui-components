@@ -59,6 +59,12 @@ STAGE["drop-overlay-upload"] = "document.getElementById('demo').click()"
 WAIT["drop-overlay-upload"] = 1000
 WAIT["live-transcript"] = 4700
 WAIT["image-generation-progress"] = 2600
+STAGE["onboarding-tour"] = "document.getElementById('start').click()"
+WAIT["onboarding-tour"] = 600
+STAGE["keyboard-shortcuts"] = "document.getElementById('open').click();document.activeElement.blur()"
+STAGE["whats-new-dialog"] = "document.getElementById('open').click();document.activeElement.blur()"
+STAGE["fact-check-panel"] = "document.querySelectorAll('details')[2].open=true"
+STAGE["ai-generated-label"] = "document.querySelector('.lab button').focus()"
 STAGE["ai-orb"] = "document.querySelector('[data-s=listen]').click()"
 
 

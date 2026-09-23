@@ -208,7 +208,7 @@ add(C, "camera-capture", "Camera Photo Capture",
 </div></div>""", """
 var view=document.getElementById('view'),ctl=document.getElementById('ctl'),note=document.getElementById('note'),stream=null,video=null;
 function msg(t){view.innerHTML='<p></p>';view.firstChild.textContent=t;}
-function stop(){if(stream){stream.getTracks().forEach(function(t){t.stop();});stream=null;}}
+function stopCamera(){if(stream){stream.getTracks().forEach(function(t){t.stop();});stream=null;}}
 function controls(html){ctl.innerHTML=html;}
 async function start(){note.hidden=true;
   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){note.hidden=false;note.textContent='This browser cannot use the camera. You can upload a photo instead.';return;}
@@ -216,8 +216,8 @@ async function start(){note.hidden=true;
   catch(e){note.hidden=false;note.textContent=e.name==='NotAllowedError'?'Camera access was blocked. Allow it in your browser settings, or upload a photo instead.':'No camera was found on this device. You can upload a photo instead.';return;}
   view.innerHTML='';video=document.createElement('video');video.playsInline=true;video.muted=true;video.srcObject=stream;view.appendChild(video);await video.play();
   controls('<button class="shot" type="button" id="snap" aria-label="Take photo"></button><button class="btn" type="button" id="cancel">Cancel</button>');
-  document.getElementById('snap').onclick=snap;document.getElementById('cancel').onclick=function(){stop();msg('Camera stopped.');reset();};}
-function snap(){var c=document.createElement('canvas');c.width=video.videoWidth;c.height=video.videoHeight;c.getContext('2d').drawImage(video,0,0);stop();
+  document.getElementById('snap').onclick=snap;document.getElementById('cancel').onclick=function(){stopCamera();msg('Camera stopped.');reset();};}
+function snap(){var c=document.createElement('canvas');c.width=video.videoWidth;c.height=video.videoHeight;c.getContext('2d').drawImage(video,0,0);stopCamera();
   var img=document.createElement('img');img.src=c.toDataURL('image/jpeg',.9);img.alt='Photo you just took';view.innerHTML='';view.appendChild(img);
   controls('<button class="btn" type="button" id="re">Retake</button><button class="btn pri" type="button" id="use">Use this photo</button>');
   document.getElementById('re').onclick=start;document.getElementById('use').onclick=function(){note.hidden=false;note.className='note';note.textContent='Photo added to your message.';};}

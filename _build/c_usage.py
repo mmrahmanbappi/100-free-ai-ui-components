@@ -202,8 +202,8 @@ add(C, "upgrade-banner", "Upgrade Plan Banner",
   <button class="btn" type="button" id="show" style="align-self:center" hidden>Show the banner again</button>
 </div>""", """
 var up=document.getElementById('up'),show=document.getElementById('show');
-function close(){up.hidden=true;show.hidden=false;show.focus();}
-document.getElementById('x').addEventListener('click',close);document.getElementById('later').addEventListener('click',close);
+function hideBanner(){up.hidden=true;show.hidden=false;show.focus();}
+document.getElementById('x').addEventListener('click',hideBanner);document.getElementById('later').addEventListener('click',hideBanner);
 show.addEventListener('click',function(){up.hidden=false;show.hidden=true;document.getElementById('x').focus();});""")
 
 add(C, "price-calculator", "Model Price Calculator",

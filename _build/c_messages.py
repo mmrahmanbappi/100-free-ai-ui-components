@@ -186,13 +186,13 @@ add(C, "edit-message", "Editable User Message",
   <div class="ai">{AV_AI}<div class="col"><div class="bubble" id="ab" aria-live="polite">The capital of Australia is Canberra, not Sydney.</div></div></div>
 </div>""", """
 var uc=document.getElementById('uc'),ub=document.getElementById('ub'),eb=document.getElementById('eb'),ab=document.getElementById('ab'),edt=document.getElementById('edt'),box=null;
-function close(){if(box){box.remove();box=null;}ub.hidden=false;eb.parentNode.hidden=false;eb.focus();}
+function closeEditor(){if(box){box.remove();box=null;}ub.hidden=false;eb.parentNode.hidden=false;eb.focus();}
 eb.addEventListener('click',function(){if(box)return;box=document.createElement('div');box.className='ed';
   box.innerHTML='<label class="sr" for="et">Edit your message</label><textarea id="et"></textarea><div class="row"><button type="button" class="btn" id="cx">Cancel</button><button type="button" class="btn pri" id="sv">Save and ask again</button></div>';
   var ta=box.querySelector('textarea');ta.value=ub.textContent;ub.hidden=true;eb.parentNode.hidden=true;uc.insertBefore(box,ub);ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);
-  box.querySelector('#cx').onclick=close;
-  ta.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-  box.querySelector('#sv').onclick=function(){var v=ta.value.trim();if(!v)return;ub.textContent=v;edt.hidden=false;close();ab.textContent='Thinking...';
+  box.querySelector('#cx').onclick=closeEditor;
+  ta.addEventListener('keydown',function(e){if(e.key==='Escape')closeEditor();});
+  box.querySelector('#sv').onclick=function(){var v=ta.value.trim();if(!v)return;ub.textContent=v;edt.hidden=false;closeEditor();ab.textContent='Thinking...';
     setTimeout(function(){ab.textContent='Here is a fresh answer to your edited question: Canberra is the capital. It was chosen as a compromise between Sydney and Melbourne.';},900);};});""")
 
 add(C, "error-retry", "Error Message with Retry",

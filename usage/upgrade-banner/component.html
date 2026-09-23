@@ -85,8 +85,8 @@ button,input,textarea,select{font:inherit;color:inherit}
 // Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
 (function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
 var up=document.getElementById('up'),show=document.getElementById('show');
-function close(){up.hidden=true;show.hidden=false;show.focus();}
-document.getElementById('x').addEventListener('click',close);document.getElementById('later').addEventListener('click',close);
+function hideBanner(){up.hidden=true;show.hidden=false;show.focus();}
+document.getElementById('x').addEventListener('click',hideBanner);document.getElementById('later').addEventListener('click',hideBanner);
 show.addEventListener('click',function(){up.hidden=false;show.hidden=true;document.getElementById('x').focus();});
 </script>
 </body>

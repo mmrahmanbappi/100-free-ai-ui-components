@@ -224,13 +224,13 @@ button,input,textarea,select{font:inherit;color:inherit}
 // Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
 (function(){var t=new URLSearchParams(location.search).get(&#x27;theme&#x27;);if(t)document.documentElement.dataset.theme=t;})();
 var uc=document.getElementById(&#x27;uc&#x27;),ub=document.getElementById(&#x27;ub&#x27;),eb=document.getElementById(&#x27;eb&#x27;),ab=document.getElementById(&#x27;ab&#x27;),edt=document.getElementById(&#x27;edt&#x27;),box=null;
-function close(){if(box){box.remove();box=null;}ub.hidden=false;eb.parentNode.hidden=false;eb.focus();}
+function closeEditor(){if(box){box.remove();box=null;}ub.hidden=false;eb.parentNode.hidden=false;eb.focus();}
 eb.addEventListener(&#x27;click&#x27;,function(){if(box)return;box=document.createElement(&#x27;div&#x27;);box.className=&#x27;ed&#x27;;
   box.innerHTML=&#x27;&lt;label class=&quot;sr&quot; for=&quot;et&quot;&gt;Edit your message&lt;/label&gt;&lt;textarea id=&quot;et&quot;&gt;&lt;/textarea&gt;&lt;div class=&quot;row&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; id=&quot;cx&quot;&gt;Cancel&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;btn pri&quot; id=&quot;sv&quot;&gt;Save and ask again&lt;/button&gt;&lt;/div&gt;&#x27;;
   var ta=box.querySelector(&#x27;textarea&#x27;);ta.value=ub.textContent;ub.hidden=true;eb.parentNode.hidden=true;uc.insertBefore(box,ub);ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);
-  box.querySelector(&#x27;#cx&#x27;).onclick=close;
-  ta.addEventListener(&#x27;keydown&#x27;,function(e){if(e.key===&#x27;Escape&#x27;)close();});
-  box.querySelector(&#x27;#sv&#x27;).onclick=function(){var v=ta.value.trim();if(!v)return;ub.textContent=v;edt.hidden=false;close();ab.textContent=&#x27;Thinking...&#x27;;
+  box.querySelector(&#x27;#cx&#x27;).onclick=closeEditor;
+  ta.addEventListener(&#x27;keydown&#x27;,function(e){if(e.key===&#x27;Escape&#x27;)closeEditor();});
+  box.querySelector(&#x27;#sv&#x27;).onclick=function(){var v=ta.value.trim();if(!v)return;ub.textContent=v;edt.hidden=false;closeEditor();ab.textContent=&#x27;Thinking...&#x27;;
     setTimeout(function(){ab.textContent=&#x27;Here is a fresh answer to your edited question: Canberra is the capital. It was chosen as a compromise between Sydney and Melbourne.&#x27;;},900);};});
 &lt;/script&gt;
 &lt;/body&gt;
