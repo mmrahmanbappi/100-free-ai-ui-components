@@ -127,6 +127,8 @@ def shell(title, desc, path, og, schema, body, script="", ogtype="website"):
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{og}">
 <meta property="og:image:alt" content="{esc(title)}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">{(chr(10) + '<link rel="image_src" href="' + og[:-6] + 'screenshot.png">') if og.endswith("/og.jpg") else ""}
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
@@ -262,7 +264,7 @@ navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textConte
 var sb=[].slice.call(document.querySelectorAll('.seg button')),pv=document.getElementById('pv');sb.forEach(function(b){b.addEventListener('click',function(){
 sb.forEach(function(x){x.setAttribute('aria-pressed',x===b)});pv.src='component.html?theme='+b.dataset.t;})});"""
         open(os.path.join(ROOT, c["category"], c["slug"], "index.html"), "w").write(
-            shell(title, desc, f"/{c['category']}/{c['slug']}/", url + "screenshot.png", schema, body, script, "article"))
+            shell(title, desc, f"/{c['category']}/{c['slug']}/", url + "og.jpg", schema, body, script, "article"))
 
     # ---------- category pages ----------
     for cid, cname, cdesc in BUILT:
