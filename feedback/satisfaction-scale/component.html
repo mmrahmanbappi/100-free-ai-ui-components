@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+  Satisfaction Scale: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Satisfaction Scale | Free AI UI Component</title>
+<meta name="description" content="Five faces from very unhappy to very happy. A quick way to ask how a chat went, drawn in SVG so it looks the same everywhere.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{width:min(100%,640px);display:flex;flex-direction:column;gap:14px}
+.ai{display:flex;gap:12px;align-items:flex-start}
+.av{width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+.col{display:flex;flex-direction:column;gap:8px;min-width:0;flex:1}
+.bubble{background:var(--surface);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:11px 15px;box-shadow:var(--shadow);color:var(--text);overflow-wrap:anywhere}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.card h2{font-size:15px;margin:0 0 4px;color:var(--ink)}.card p{margin:0 0 12px;color:var(--muted);font-size:14px}
+.ib{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;background:none;color:var(--muted);height:32px;min-width:32px;padding:0 8px;border-radius:8px;cursor:pointer;font-size:13px}
+.ib:hover{background:var(--surface-2);color:var(--ink)}
+.ib[aria-pressed=true]{color:var(--accent);background:var(--accent-soft)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:9px;padding:7px 14px;font-size:14px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.thanks{font-size:13.5px;color:var(--good);display:flex;align-items:center;gap:6px;animation:in .25s ease}
+@keyframes in{from{opacity:0;transform:translateY(3px)}}.card{text-align:center}
+.faces{display:flex;justify-content:center;gap:6px;margin:10px 0 6px;border:0;padding:0}
+.faces input{position:absolute;opacity:0;width:1px;height:1px}
+.faces label{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:var(--muted);padding:8px 6px;border-radius:12px;min-width:62px;font-size:12px;transition:transform .1s,color .1s}
+.faces label:hover{transform:translateY(-2px);color:var(--ink)}
+.faces input:checked+label{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.faces input:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:420px){.faces label{min-width:52px;font-size:11px}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+  <h2 id="h">How was your chat today?</h2><p>Your answer helps us make the assistant better.</p>
+  <fieldset class="faces" aria-labelledby="h">
+    <input type="radio" name="s" id="f1" value="1"><label for="f1"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="9" cy="10" r=".9" fill="currentColor"/><circle cx="15" cy="10" r=".9" fill="currentColor"/><path d="M8 16.5q4-4 8 0" fill="none"/></svg><span>Very unhappy</span></label><input type="radio" name="s" id="f2" value="2"><label for="f2"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="9" cy="10" r=".9" fill="currentColor"/><circle cx="15" cy="10" r=".9" fill="currentColor"/><path d="M8.5 15.5h7" fill="none"/></svg><span>Unhappy</span></label><input type="radio" name="s" id="f3" value="3"><label for="f3"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="9" cy="10" r=".9" fill="currentColor"/><circle cx="15" cy="10" r=".9" fill="currentColor"/><path d="M8 15q4 2 8 0" fill="none"/></svg><span>Okay</span></label><input type="radio" name="s" id="f4" value="4"><label for="f4"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="9" cy="10" r=".9" fill="currentColor"/><circle cx="15" cy="10" r=".9" fill="currentColor"/><path d="M7.5 14q4.5 4.5 9 0" fill="none"/></svg><span>Happy</span></label><input type="radio" name="s" id="f5" value="5"><label for="f5"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="9" cy="10" r=".9" fill="currentColor"/><circle cx="15" cy="10" r=".9" fill="currentColor"/><path d="M7 13.5q5 6 10 0z" fill="currentColor"/></svg><span>Very happy</span></label>
+  </fieldset>
+  <p class="thanks" id="t" role="status" aria-live="polite" style="justify-content:center;min-height:1.4em;margin:0"></p>
+</div></div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+document.querySelectorAll('.faces input').forEach(function(i){i.addEventListener('change',function(){document.getElementById('t').textContent='Thanks for sharing how it went.';});});
+</script>
+</body>
+</html>

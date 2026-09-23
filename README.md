@@ -6,7 +6,7 @@ The parts every AI app needs: prompt boxes, thinking animations, token meters, a
 
 **[See every component with a live demo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/)**
 
-30 of 100 components are ready. New ones are added every week.
+40 of 100 components are ready. New ones are added every week.
 
 ## Why use these components
 
@@ -78,9 +78,26 @@ Message bubbles, code blocks, sources and actions for AI answers.
 | [![Message with Attached Files](messages/file-message/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/file-message/) | **[Message with Attached Files](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/file-message/)**<br>A user message with attached file cards, showing the file type, name and size, followed by the assistant's reply. |
 | [![Long Answer with Show More](messages/long-message-toggle/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/long-message-toggle/) | **[Long Answer with Show More](https://mmrahmanbappi.github.io/100-free-ai-ui-components/messages/long-message-toggle/)**<br>Long answers fold after a few lines with a soft fade and a Show more button, so the chat stays easy to scan. |
 
+### Answer Feedback
+
+Ratings, thumbs, comparisons and forms that tell you if an answer helped.
+
+| Preview | Component |
+|---|---|
+| [![Thumbs Up and Down](feedback/thumbs-feedback/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/thumbs-feedback/) | **[Thumbs Up and Down](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/thumbs-feedback/)**<br>Two small buttons under an answer. Pick one to rate it, pick it again to undo, and see a short thank you. |
+| [![Thumbs Down with Reasons](feedback/thumbs-down-reasons/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/thumbs-down-reasons/) | **[Thumbs Down with Reasons](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/thumbs-down-reasons/)**<br>When someone marks an answer as bad, a small panel asks why, with quick reason buttons and an optional comment. |
+| [![Star Rating](feedback/star-rating/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/star-rating/) | **[Star Rating](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/star-rating/)**<br>Rate an answer from one to five stars with the mouse or keyboard. Each level shows a word, like Good or Excellent. |
+| [![Was This Helpful Bar](feedback/helpful-bar/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/helpful-bar/) | **[Was This Helpful Bar](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/helpful-bar/)**<br>A short question at the end of an answer with Yes and No buttons. It turns into a thank you once someone answers. |
+| [![Compare Two Answers](feedback/compare-answers/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/compare-answers/) | **[Compare Two Answers](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/compare-answers/)**<br>Two answers side by side so people can pick the better one, or say both are good or both are bad. Useful for testing models. |
+| [![Report a Problem Dialog](feedback/report-dialog/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/report-dialog/) | **[Report a Problem Dialog](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/report-dialog/)**<br>A report button opens a dialog to flag an answer, with categories and details. It traps focus and closes with Escape. |
+| [![Satisfaction Scale](feedback/satisfaction-scale/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/satisfaction-scale/) | **[Satisfaction Scale](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/satisfaction-scale/)**<br>Five faces from very unhappy to very happy. A quick way to ask how a chat went, drawn in SVG so it looks the same everywhere. |
+| [![Rewrite Options Menu](feedback/rewrite-options/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/rewrite-options/) | **[Rewrite Options Menu](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/rewrite-options/)**<br>A Try again button with a menu to change the answer: shorter, longer, simpler or more formal. The answer updates in place. |
+| [![Confidence Badge](feedback/confidence-badge/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/confidence-badge/) | **[Confidence Badge](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/confidence-badge/)**<br>A small badge that tells people how sure the AI is about an answer, with a short explanation and a reminder to check sources. |
+| [![Feedback Toast with Undo](feedback/feedback-toast/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/feedback-toast/) | **[Feedback Toast with Undo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/feedback-toast/)**<br>After someone rates an answer, a small message slides up to confirm it, with an Undo button for a few seconds. |
+
 ## Coming next
 
-Answer Feedback, Tokens and Usage, Model and Settings, Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
+Tokens and Usage, Model and Settings, Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
 
 ## License
 

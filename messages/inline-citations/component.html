@@ -58,8 +58,9 @@ button,input,textarea,select{font:inherit;color:inherit}
 .tb button:hover{background:var(--surface-2);color:var(--ink)}
 .cite{position:relative;display:inline-block}
 .cite>button{border:0;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;border-radius:6px;padding:0 5px;margin:0 1px;cursor:pointer;vertical-align:super;line-height:1.5}
-.pop{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);width:240px;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:10px 12px;font-size:13px;z-index:2;visibility:hidden;opacity:0;transition:opacity .15s}
-.cite:hover .pop,.cite:focus-within .pop{visibility:visible;opacity:1}
+.pop{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);width:min(240px,70vw);background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:10px 12px;font-size:13px;z-index:2;display:none;animation:pin .15s ease}
+.cite:hover .pop,.cite:focus-within .pop{display:block}
+@keyframes pin{from{opacity:0}}
 .pop b{display:block;color:var(--ink)}.pop span{color:var(--muted);font-size:12px}
 .srcs{margin:12px 0 0;padding:10px 0 0;border-top:1px solid var(--line);list-style:none;display:flex;flex-direction:column;gap:6px;font-size:13px}
 .srcs li{display:flex;gap:8px}.srcs .n{color:var(--accent);font-weight:700;min-width:16px}.srcs a{color:var(--ink)}

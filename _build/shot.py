@@ -27,6 +27,15 @@ STAGE["inline-citations"] = "document.querySelector('.cite button[aria-described
 STAGE["edit-message"] = "document.getElementById('eb').click()"
 STAGE["answer-versions"] = "document.getElementById('re').click()"
 WAIT["answer-versions"] = 1000
+STAGE["thumbs-feedback"] = "document.querySelector('[data-v=up]').click()"
+STAGE["thumbs-down-reasons"] = "document.getElementById('dn').click();document.querySelectorAll('.chip')[0].click();document.querySelectorAll('.chip')[2].click();document.activeElement.blur()"
+STAGE["star-rating"] = "var i=document.getElementById('s4');i.checked=true;i.dispatchEvent(new Event('change'))"
+STAGE["compare-answers"] = "document.querySelector('.choices [data-v=A]').click()"
+STAGE["report-dialog"] = "document.getElementById('open').click();document.querySelector('input[value=wrong]').checked=true;document.activeElement.blur()"
+STAGE["satisfaction-scale"] = "var i=document.getElementById('f4');i.checked=true;i.dispatchEvent(new Event('change'))"
+STAGE["rewrite-options"] = "document.getElementById('tg').click();document.activeElement.blur()"
+STAGE["feedback-toast"] = "document.querySelector('[data-v=up]').click()"
+WAIT["feedback-toast"] = 700
 STAGE["ai-orb"] = "document.querySelector('[data-s=listen]').click()"
 
 
