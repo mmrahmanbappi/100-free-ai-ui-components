@@ -36,6 +36,8 @@ STAGE["satisfaction-scale"] = "var i=document.getElementById('f4');i.checked=tru
 STAGE["rewrite-options"] = "document.getElementById('tg').click();document.activeElement.blur()"
 STAGE["feedback-toast"] = "document.querySelector('[data-v=up]').click()"
 WAIT["feedback-toast"] = 700
+STAGE["usage-chart"] = "document.querySelectorAll('.chart button')[10].focus()"
+STAGE["message-cost"] = "document.querySelector('details.cost').open=true"
 STAGE["ai-orb"] = "document.querySelector('[data-s=listen]').click()"
 
 

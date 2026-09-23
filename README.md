@@ -6,7 +6,7 @@ The parts every AI app needs: prompt boxes, thinking animations, token meters, a
 
 **[See every component with a live demo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/)**
 
-40 of 100 components are ready. New ones are added every week.
+50 of 100 components are ready. New ones are added every week.
 
 ## Why use these components
 
@@ -95,9 +95,26 @@ Ratings, thumbs, comparisons and forms that tell you if an answer helped.
 | [![Confidence Badge](feedback/confidence-badge/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/confidence-badge/) | **[Confidence Badge](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/confidence-badge/)**<br>A small badge that tells people how sure the AI is about an answer, with a short explanation and a reminder to check sources. |
 | [![Feedback Toast with Undo](feedback/feedback-toast/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/feedback-toast/) | **[Feedback Toast with Undo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/feedback/feedback-toast/)**<br>After someone rates an answer, a small message slides up to confirm it, with an Undo button for a few seconds. |
 
+### Tokens and Usage
+
+Token meters, context bars, credits and limits that show what each chat costs.
+
+| Preview | Component |
+|---|---|
+| [![Token Ring Meter](usage/token-ring/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/token-ring/) | **[Token Ring Meter](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/token-ring/)**<br>A small ring that fills as a chat uses up its token budget. It turns orange near the limit and red when full, with an exact count on hover. |
+| [![Context Window Bar](usage/context-window-bar/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/context-window-bar/) | **[Context Window Bar](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/context-window-bar/)**<br>A bar that shows what fills the AI's memory for this chat: instructions, files, chat history and room left for the reply. |
+| [![Credits Remaining Card](usage/credits-card/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/credits-card/) | **[Credits Remaining Card](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/credits-card/)**<br>Shows how many credits are left this month, when they reset, and a button to buy more. The bar changes color as credits run low. |
+| [![Rate Limit Banner](usage/rate-limit-banner/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/rate-limit-banner/) | **[Rate Limit Banner](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/rate-limit-banner/)**<br>A clear banner when someone hits their message limit, with a live countdown to when they can send again and the prompt box turned off. |
+| [![Cost per Message](usage/message-cost/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/message-cost/) | **[Cost per Message](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/message-cost/)**<br>A small line under each answer showing tokens in and out and what the message cost. Click it to see the full breakdown. |
+| [![Daily Usage Chart](usage/usage-chart/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/usage-chart/) | **[Daily Usage Chart](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/usage-chart/)**<br>A small bar chart of tokens used each day for two weeks. Hover or use the Tab key to read each day's exact number. |
+| [![Upgrade Plan Banner](usage/upgrade-banner/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/upgrade-banner/) | **[Upgrade Plan Banner](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/upgrade-banner/)**<br>A friendly banner that appears when someone is close to their free limit, comparing free and paid limits. It can be closed. |
+| [![Model Price Calculator](usage/price-calculator/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/price-calculator/) | **[Model Price Calculator](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/price-calculator/)**<br>Pick a model and enter expected tokens to estimate the monthly cost. Uses example prices that you replace with your own. |
+| [![Messages Left Today](usage/daily-limit-ring/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/daily-limit-ring/) | **[Messages Left Today](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/daily-limit-ring/)**<br>A ring that counts down the messages left today, with the reset time. Useful for free plans with a daily limit. |
+| [![Spending Alerts](usage/spend-alerts/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/spend-alerts/) | **[Spending Alerts](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/spend-alerts/)**<br>Set a monthly budget and choose when to get an email: at half, most or all of the budget. Shows spend so far and a forecast. |
+
 ## Coming next
 
-Tokens and Usage, Model and Settings, Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
+Model and Settings, Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
 
 ## License
 

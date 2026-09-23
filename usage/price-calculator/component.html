@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+  Model Price Calculator: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Price Calculator | Free AI UI Component</title>
+<meta name="description" content="Pick a model and enter expected tokens to estimate the monthly cost. Uses example prices that you replace with your own.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{width:min(100%,560px);display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+.card h2{font-size:15px;margin:0 0 4px;color:var(--ink)}
+.muted{color:var(--muted);font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn:hover{border-color:var(--accent)}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.bar{height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--accent);transition:width .3s,background .3s}
+.ok{--lvl:var(--accent)}.warn{--lvl:var(--warn)}.full{--lvl:var(--bad)}
+.tg{width:38px;height:22px;border-radius:99px;background:var(--line);position:relative;flex:none;border:0;cursor:pointer;padding:0}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s}
+.tg[aria-checked=true]{background:var(--accent)}.tg[aria-checked=true]::after{left:19px}
+.wrap{width:min(100%,600px)}
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 16px;border:0;padding:0}
+.models label{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;font-size:13px;display:flex;flex-direction:column;gap:2px}
+.models label b{color:var(--ink);font-size:14px}
+.models label:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.models input{position:absolute;opacity:0;width:1px;height:1px}
+.models label:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fields label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;color:var(--ink)}
+.fields input{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--surface);color:var(--ink);font-variant-numeric:tabular-nums}
+.res{margin-top:16px;padding:14px;border-radius:12px;background:var(--surface-2);display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.res b{font-size:28px;color:var(--ink)}
+@media(max-width:500px){.models,.fields{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+  <h2>Estimate your monthly cost</h2><p class="muted" style="margin:0">Example prices per million tokens.</p>
+  <fieldset class="models" id="models"><legend class="sr">Model</legend>
+    <label><input type="radio" name="m" value="fast"><b>Fast</b><span>$0.25 in, $1.25 out</span></label>
+    <label><input type="radio" name="m" value="balanced" checked><b>Balanced</b><span>$3 in, $15 out</span></label>
+    <label><input type="radio" name="m" value="deep"><b>Deep</b><span>$15 in, $75 out</span></label></fieldset>
+  <div class="fields"><label>Input tokens per month<input id="in" type="number" min="0" step="100000" value="20000000"></label>
+    <label>Output tokens per month<input id="out" type="number" min="0" step="100000" value="4000000"></label></div>
+  <div class="res" aria-live="polite"><span class="muted">Estimated cost per month</span><b class="num" id="res">$0</b></div>
+</div></div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+var P={fast:[0.25,1.25],balanced:[3,15],deep:[15,75]},inp=document.getElementById('in'),out=document.getElementById('out'),res=document.getElementById('res');
+function calc(){var m=document.querySelector('input[name=m]:checked').value,i=Math.max(0,+inp.value||0),o=Math.max(0,+out.value||0);
+  var cost=i/1e6*P[m][0]+o/1e6*P[m][1];res.textContent='$'+cost.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
+document.querySelectorAll('input').forEach(function(x){x.addEventListener('input',calc);x.addEventListener('change',calc);});calc();
+</script>
+</body>
+</html>
