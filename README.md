@@ -6,7 +6,7 @@ The parts every AI app needs: prompt boxes, thinking animations, token meters, a
 
 **[See every component with a live demo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/)**
 
-50 of 100 components are ready. New ones are added every week.
+60 of 100 components are ready. New ones are added every week.
 
 ## Why use these components
 
@@ -112,9 +112,26 @@ Token meters, context bars, credits and limits that show what each chat costs.
 | [![Messages Left Today](usage/daily-limit-ring/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/daily-limit-ring/) | **[Messages Left Today](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/daily-limit-ring/)**<br>A ring that counts down the messages left today, with the reset time. Useful for free plans with a daily limit. |
 | [![Spending Alerts](usage/spend-alerts/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/spend-alerts/) | **[Spending Alerts](https://mmrahmanbappi.github.io/100-free-ai-ui-components/usage/spend-alerts/)**<br>Set a monthly budget and choose when to get an email: at half, most or all of the budget. Shows spend so far and a forecast. |
 
+### Model and Settings
+
+Model pickers, sliders and toggles that control how the AI answers.
+
+| Preview | Component |
+|---|---|
+| [![Model Selection Cards](settings/model-cards/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/model-cards/) | **[Model Selection Cards](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/model-cards/)**<br>Choose a model from cards that compare speed and quality with small meters. Works with arrow keys like a radio group. |
+| [![Creativity Slider](settings/temperature-slider/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/temperature-slider/) | **[Creativity Slider](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/temperature-slider/)**<br>A slider for the model temperature with plain labels from Precise to Creative, a live value, and a sample line that shows the effect. |
+| [![System Prompt Editor](settings/system-prompt-editor/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/system-prompt-editor/) | **[System Prompt Editor](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/system-prompt-editor/)**<br>Edit the instructions the AI follows in every chat. Includes ready-made starters, a character count, and Save only when something changed. |
+| [![Answer Length Control](settings/response-length/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/response-length/) | **[Answer Length Control](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/response-length/)**<br>A three-way switch for short, medium or long answers, with a preview that shows how much text each choice gives. |
+| [![Tone Selector](settings/tone-selector/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/tone-selector/) | **[Tone Selector](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/tone-selector/)**<br>Pick how the AI should sound: friendly, professional, casual or direct. A sample reply updates so people can hear the difference. |
+| [![Feature Toggles](settings/feature-toggles/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/feature-toggles/) | **[Feature Toggles](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/feature-toggles/)**<br>A settings list of switches for AI features like web search, memory and code running, each with a short explanation. |
+| [![Assistant Persona Cards](settings/persona-cards/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/persona-cards/) | **[Assistant Persona Cards](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/persona-cards/)**<br>Cards for different assistant roles, like tutor, editor or coach. Picking one changes how the assistant greets you. |
+| [![Advanced Parameters Panel](settings/advanced-parameters/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/advanced-parameters/) | **[Advanced Parameters Panel](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/advanced-parameters/)**<br>A folding panel for power users: maximum answer length, top p, and stop words you can add and remove, with a reset to defaults. |
+| [![Reply Language Picker](settings/language-picker/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/language-picker/) | **[Reply Language Picker](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/language-picker/)**<br>A searchable list to choose the language for answers. Shows each language in its own script and supports right-to-left text. |
+| [![Privacy Controls](settings/privacy-controls/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/privacy-controls/) | **[Privacy Controls](https://mmrahmanbappi.github.io/100-free-ai-ui-components/settings/privacy-controls/)**<br>Clear privacy settings for an AI app: save chat history, allow chats to improve the model, auto-delete, plus export and delete with a confirm step. |
+
 ## Coming next
 
-Model and Settings, Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
+Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
 
 ## License
 

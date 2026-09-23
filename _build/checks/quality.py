@@ -18,7 +18,7 @@ const bad=[];for(const e of document.querySelectorAll('body *')){
   const cs=getComputedStyle(e),box=e.getBoundingClientRect();if(cs.visibility==='hidden'||box.height===0||box.width<=1||+cs.opacity<.5)continue;
   if(cs.webkitTextFillColor&&cs.webkitTextFillColor.includes('0)'))continue;
   const f=rgb(cs.color),b=bg(e),r=(Math.max(lum(f),lum(b))+.05)/(Math.min(lum(f),lum(b))+.05);
-  const big=parseFloat(cs.fontSize)>=18.5||(parseFloat(cs.fontSize)>=14&&+cs.fontWeight>=700);
+  const fs=parseFloat(cs.fontSize),big=fs>=24||(fs>=18.66&&+cs.fontWeight>=700);  // WCAG large text: 18pt, or 14pt bold
   if(r<(big?3:4.5))bad.push((e.className||e.tagName)+' '+r.toFixed(2)+' "'+e.textContent.trim().slice(0,24)+'"')}
 return bad.slice(0,4)})()"""
 

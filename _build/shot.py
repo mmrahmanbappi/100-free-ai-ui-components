@@ -38,6 +38,8 @@ STAGE["feedback-toast"] = "document.querySelector('[data-v=up]').click()"
 WAIT["feedback-toast"] = 700
 STAGE["usage-chart"] = "document.querySelectorAll('.chart button')[10].focus()"
 STAGE["message-cost"] = "document.querySelector('details.cost').open=true"
+STAGE["language-picker"] = "var q=document.getElementById('q');q.focus();q.value='a';q.dispatchEvent(new Event('input'))"
+STAGE["system-prompt-editor"] = "var t=document.getElementById('ta');t.value+=' Use examples from everyday life.';t.dispatchEvent(new Event('input'))"
 STAGE["ai-orb"] = "document.querySelector('[data-s=listen]').click()"
 
 

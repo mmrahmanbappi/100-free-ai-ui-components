@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+  Reply Language Picker: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reply Language Picker | Free AI UI Component</title>
+<meta name="description" content="A searchable list to choose the language for answers. Shows each language in its own script and supports right-to-left text.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{width:min(100%,580px);display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+.card h2{font-size:15.5px;margin:0 0 4px;color:var(--ink)}
+.muted{color:var(--muted);font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--accent)}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.danger{color:var(--bad)}.btn.danger:hover{border-color:var(--bad)}
+.tg{width:40px;height:23px;border-radius:99px;background:var(--line);position:relative;flex:none;border:0;cursor:pointer;padding:0;transition:background .15s}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:17px;height:17px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.tg[aria-checked=true]{background:var(--accent)}.tg[aria-checked=true]::after{left:20px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.row b{display:block;color:var(--ink);font-size:14px;font-weight:600}.row small{display:block;color:var(--muted);font-size:12.5px;margin-top:1px}
+.seg{display:flex;background:var(--surface-2);border-radius:12px;padding:4px;gap:4px}
+.seg button{flex:1;border:0;background:none;padding:8px 10px;border-radius:9px;font-size:14px;color:var(--muted);cursor:pointer;font-weight:500}
+.seg button[aria-checked=true]{background:var(--surface);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.sample{margin:14px 0 0;padding:12px 14px;border-radius:12px;background:var(--surface-2);font-size:14px;line-height:1.6;color:var(--text);transition:opacity .2s}
+.sample small{display:block;color:var(--muted);font-size:12px;margin-bottom:4px}
+.cb{position:relative;margin-top:12px}
+.cb input{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px 38px 10px 12px;background:var(--surface);color:var(--ink)}
+.cb input:focus{outline:0;border-color:var(--accent)}
+.cb>svg{position:absolute;right:12px;top:14px;color:var(--muted);pointer-events:none}
+.lb{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);list-style:none;margin:0;padding:6px;max-height:min(230px,40vh);overflow:auto;z-index:2}
+.lb li{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:14px;color:var(--ink)}
+.lb li span{color:var(--muted)}
+.lb li[aria-selected=true]{background:var(--accent-soft)}
+.lb .none{color:var(--muted);cursor:default}
+.picked{margin-top:12px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+  <h2 id="lbl">Reply language</h2><p class="muted" style="margin:0">The AI will answer in this language.</p>
+  <div class="cb"><input id="q" role="combobox" aria-labelledby="lbl" aria-controls="lb" aria-expanded="false" aria-autocomplete="list" placeholder="Search languages" autocomplete="off"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    <ul class="lb" id="lb" role="listbox" aria-labelledby="lbl" hidden></ul></div>
+  <p class="picked" id="pk" aria-live="polite"></p>
+</div></div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+var L=[['English','English','ltr'],['Spanish','Español','ltr'],['French','Français','ltr'],['German','Deutsch','ltr'],['Portuguese','Português','ltr'],['Arabic','العربية','rtl'],
+['Hindi','हिन्दी','ltr'],['Bengali','বাংলা','ltr'],['Chinese','中文','ltr'],['Japanese','日本語','ltr'],['Russian','Русский','ltr'],['Turkish','Türkçe','ltr'],['Urdu','اردو','rtl'],['Indonesian','Bahasa Indonesia','ltr']];
+var q=document.getElementById('q'),lb=document.getElementById('lb'),pk=document.getElementById('pk'),shown=[],sel=0,cur=L[0];
+function open(v){lb.hidden=!v;q.setAttribute('aria-expanded',v);}
+function render(){var t=q.value.trim().toLowerCase();shown=L.filter(function(l){return !t||l[0].toLowerCase().indexOf(t)>-1||l[1].toLowerCase().indexOf(t)>-1;});sel=Math.min(sel,Math.max(0,shown.length-1));lb.innerHTML='';
+  if(!shown.length){lb.innerHTML='<li class="none">No language found</li>';q.removeAttribute('aria-activedescendant');}
+  shown.forEach(function(l,i){var li=document.createElement('li');li.id='lo'+i;li.setAttribute('role','option');li.setAttribute('aria-selected',i===sel);
+    li.innerHTML='<b></b><span></span>';li.querySelector('b').textContent=l[0];var s=li.querySelector('span');s.textContent=l[1];s.dir=l[2];s.lang='';
+    li.onmousedown=function(e){e.preventDefault();pick(l);};lb.appendChild(li);});
+  if(shown.length)q.setAttribute('aria-activedescendant','lo'+sel);}
+function pick(l){cur=l;q.value='';open(false);pk.innerHTML='Answers will be in <b></b> <span></span>';pk.querySelector('b').textContent=l[0];var s=pk.querySelector('span');s.textContent='('+l[1]+')';s.dir=l[2];}
+q.addEventListener('focus',function(){render();open(true);});
+q.addEventListener('input',function(){sel=0;render();open(true);});
+q.addEventListener('keydown',function(e){if(e.key==='ArrowDown'){e.preventDefault();open(true);sel=Math.min(sel+1,shown.length-1);render();}
+  else if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(sel-1,0);render();}
+  else if(e.key==='Enter'){e.preventDefault();if(shown[sel])pick(shown[sel]);}else if(e.key==='Escape'){open(false);}});
+q.addEventListener('blur',function(){open(false);});
+pick(L[0]);
+</script>
+</body>
+</html>
