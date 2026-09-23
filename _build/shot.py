@@ -20,6 +20,12 @@ STAGE = {
 }
 
 
+# How long to wait before the picture, so animated components are caught mid-way
+WAIT = {"streaming-text": 1900, "reasoning-panel": 2300, "agent-progress-steps": 2500, "status-spinner": 1700,
+        "tool-call-indicator": 2100, "stop-generating": 2000, "thinking-shimmer": 700}
+STAGE["ai-orb"] = "document.querySelector('[data-s=listen]').click()"
+
+
 def main(only=None):
     files = sorted(glob.glob(os.path.join(ROOT, "*", "*", "component.html")))
     if only:
@@ -34,7 +40,7 @@ def main(only=None):
                 pg.goto("file://" + f, wait_until="load")
                 if slug in STAGE:
                     pg.evaluate("(()=>{var q;" + STAGE[slug] + "})()")
-                pg.wait_for_timeout(450)
+                pg.wait_for_timeout(WAIT.get(slug, 450))
                 out = os.path.join(d, "screenshot.png" if theme == "light" else "screenshot-dark.png")
                 pg.screenshot(path=out)
                 im = Image.open(out).convert("RGB")

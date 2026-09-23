@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+  Stop Generating Button: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stop Generating Button | Free AI UI Component</title>
+<meta name="description" content="A stop button that appears while the answer is being written. Stopping keeps what was written and offers to continue or try again.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{width:min(100%,640px);display:flex;flex-direction:column;gap:14px}
+.ai{display:flex;gap:12px;align-items:flex-start}
+.av{width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+.bubble{background:var(--surface);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:12px 15px;box-shadow:var(--shadow);color:var(--text);min-width:0;max-width:100%}
+.meta{font-size:12px;color:var(--muted)}
+.replay{align-self:center;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer}
+.replay:hover{border-color:var(--accent);color:var(--ink)}
+.out{white-space:pre-wrap;line-height:1.65}
+.cur{display:inline-block;width:7px;height:1.05em;background:var(--accent);vertical-align:text-bottom;margin-left:2px;border-radius:2px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.note{display:block;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.bar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:var(--shadow)}
+.btn:hover{border-color:var(--accent)}.btn[hidden]{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="ai"><div class="av" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div><div class="bubble" style="flex:1"><span class="out" id="o" aria-live="polite"></span><span class="cur" id="c" aria-hidden="true"></span><span class="note" id="n" hidden>You stopped this answer.</span></div></div>
+  <div class="bar">
+    <button class="btn" id="stop" type="button"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>Stop generating</button>
+    <button class="btn" id="cont" type="button" hidden>Continue</button>
+    <button class="btn" id="again" type="button" hidden>Try again</button>
+  </div>
+</div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+var TEXT="Here are five ways to save on groceries. First, plan meals for the week before you shop. Second, buy store brands for basics like rice, flour and pasta. Third, check the reduced shelf in the evening. Fourth, cook bigger batches and freeze portions. Fifth, keep a running list on your phone so you only buy what you need.";
+var o=document.getElementById('o'),c=document.getElementById('c'),n=document.getElementById('n'),stop=document.getElementById('stop'),cont=document.getElementById('cont'),again=document.getElementById('again');
+var words=TEXT.split(' '),i=0,t=null;
+function ui(state){stop.hidden=state!=='run';cont.hidden=state!=='stopped';again.hidden=state==='run';c.hidden=state!=='run';n.hidden=state!=='stopped';}
+function step(){if(i>=words.length){ui('done');return;}o.textContent+=(i?' ':'')+words[i++];t=setTimeout(step,55+Math.random()*60);}
+function start(reset,byUser){clearTimeout(t);if(reset){o.textContent='';i=0;}ui('run');step();if(byUser)stop.focus();}
+stop.addEventListener('click',function(){clearTimeout(t);ui('stopped');cont.focus();});
+cont.addEventListener('click',function(){start(false,true);});
+again.addEventListener('click',function(){start(true,true);});
+start(true);
+</script>
+</body>
+</html>

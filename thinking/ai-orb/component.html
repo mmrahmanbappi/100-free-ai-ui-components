@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+  AI Orb: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Orb | Free AI UI Component</title>
+<meta name="description" content="A glowing orb that shows what the assistant is doing: resting, listening or thinking. Great for voice and assistant screens.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{display:flex;flex-direction:column;align-items:center;gap:22px}
+.orb{width:150px;height:150px;border-radius:50%;position:relative;background:radial-gradient(circle at 35% 30%,#fff 0,var(--accent) 38%,color-mix(in srgb,var(--accent) 60%,#000) 100%);box-shadow:0 0 60px -10px var(--accent);transition:transform .4s}
+.orb::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid var(--accent);opacity:0}
+.orb.idle{animation:breathe 4s ease-in-out infinite}
+.orb.listen{animation:breathe 1.2s ease-in-out infinite}.orb.listen::after{animation:ring 1.4s ease-out infinite}
+.orb.think{animation:wobble 2.2s ease-in-out infinite;filter:saturate(1.3)}
+@keyframes breathe{50%{transform:scale(1.06)}}
+@keyframes ring{from{opacity:.7;transform:scale(.95)}to{opacity:0;transform:scale(1.35)}}
+@keyframes wobble{0%,100%{border-radius:50%;transform:rotate(0)}25%{border-radius:46% 54% 52% 48%}50%{border-radius:53% 47% 45% 55%;transform:rotate(12deg)}75%{border-radius:48% 52% 55% 45%}}
+.lab{font-weight:600;color:var(--ink);min-height:1.5em}
+.seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px}
+.seg button{border:0;background:none;padding:7px 14px;border-radius:9px;font-size:14px;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--accent-soft);color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="orb idle" id="orb" aria-hidden="true"></div>
+  <div class="lab" id="lab" role="status" aria-live="polite">Ready when you are</div>
+  <div class="seg" role="group" aria-label="Assistant state">
+    <button type="button" data-s="idle" aria-pressed="true">Resting</button>
+    <button type="button" data-s="listen" aria-pressed="false">Listening</button>
+    <button type="button" data-s="think" aria-pressed="false">Thinking</button>
+  </div>
+</div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+var orb=document.getElementById('orb'),lab=document.getElementById('lab'),bs=[].slice.call(document.querySelectorAll('.seg button'));
+var LAB={idle:'Ready when you are',listen:'Listening...',think:'Thinking about your question'};
+// Call setState('idle' | 'listen' | 'think') from your app.
+function setState(s){orb.className='orb '+s;lab.textContent=LAB[s];bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.s===s);});}
+bs.forEach(function(b){b.addEventListener('click',function(){setState(b.dataset.s);});});
+</script>
+</body>
+</html>

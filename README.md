@@ -6,7 +6,7 @@ The parts every AI app needs: prompt boxes, thinking animations, token meters, a
 
 **[See every component with a live demo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/)**
 
-10 of 100 components are ready. New ones are added every week.
+20 of 100 components are ready. New ones are added every week.
 
 ## Why use these components
 
@@ -44,9 +44,26 @@ Boxes where people type to the AI, from a simple field to slash commands and his
 | [![Prompt with Send Shortcut Setting](prompt-input/send-shortcut-prompt/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/send-shortcut-prompt/) | **[Prompt with Send Shortcut Setting](https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/send-shortcut-prompt/)**<br>Lets people choose whether Enter sends the message or adds a new line, with a keyboard hint that updates to match. |
 | [![Prompt with History](prompt-input/prompt-history/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/prompt-history/) | **[Prompt with History](https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/prompt-history/)**<br>Press the Up arrow in an empty box to bring back earlier prompts, like a terminal. Recent prompts also appear as a list. |
 
+### Thinking and Loading
+
+Animations and states that show the AI is working, streaming or using a tool.
+
+| Preview | Component |
+|---|---|
+| [![Typing Dots](thinking/typing-dots/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/typing-dots/) | **[Typing Dots](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/typing-dots/)**<br>Three bouncing dots inside an answer bubble, the classic sign that the AI is writing a reply. |
+| [![Thinking Shimmer](thinking/thinking-shimmer/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/thinking-shimmer/) | **[Thinking Shimmer](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/thinking-shimmer/)**<br>A soft light moves across the word Thinking while the AI works, then it changes to how long the thinking took. |
+| [![Streaming Text](thinking/streaming-text/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/streaming-text/) | **[Streaming Text](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/streaming-text/)**<br>The answer appears word by word with a blinking cursor, the way most AI chat apps show a reply as it is written. |
+| [![Reasoning Panel](thinking/reasoning-panel/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/reasoning-panel/) | **[Reasoning Panel](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/reasoning-panel/)**<br>A panel that shows each thinking step while the AI works, then folds itself away with a summary you can open again. |
+| [![Agent Progress Steps](thinking/agent-progress-steps/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/agent-progress-steps/) | **[Agent Progress Steps](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/agent-progress-steps/)**<br>A checklist of what an AI agent is doing right now. Each step shows a spinner while it runs and a tick when it is done. |
+| [![Skeleton Message](thinking/skeleton-message/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/skeleton-message/) | **[Skeleton Message](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/skeleton-message/)**<br>Grey placeholder lines with a moving shine that hold the space of the answer while it loads, so the page does not jump. |
+| [![AI Orb](thinking/ai-orb/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/ai-orb/) | **[AI Orb](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/ai-orb/)**<br>A glowing orb that shows what the assistant is doing: resting, listening or thinking. Great for voice and assistant screens. |
+| [![Spinner with Status Text](thinking/status-spinner/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/status-spinner/) | **[Spinner with Status Text](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/status-spinner/)**<br>A small spinner with a line of text that changes as the work moves forward, so people know the AI has not frozen. |
+| [![Web Search Indicator](thinking/tool-call-indicator/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/tool-call-indicator/) | **[Web Search Indicator](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/tool-call-indicator/)**<br>Shows that the AI is searching the web, with sources popping in one by one, then a short summary of how many it found. |
+| [![Stop Generating Button](thinking/stop-generating/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/stop-generating/) | **[Stop Generating Button](https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/stop-generating/)**<br>A stop button that appears while the answer is being written. Stopping keeps what was written and offers to continue or try again. |
+
 ## Coming next
 
-Thinking and Loading, Chat Messages, Answer Feedback, Tokens and Usage, Model and Settings, Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
+Chat Messages, Answer Feedback, Tokens and Usage, Model and Settings, Chat Layouts, Agents and Tools, Voice and Media, Trust and Onboarding.
 
 ## License
 

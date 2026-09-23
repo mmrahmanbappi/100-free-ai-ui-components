@@ -9,6 +9,10 @@
     <lastmod>2026-09-23</lastmod>
   </url>
   <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/</loc>
+    <lastmod>2026-09-23</lastmod>
+  </url>
+  <url>
     <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/basic-prompt-box/</loc>
     <lastmod>2026-09-23</lastmod>
     <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/basic-prompt-box/screenshot.png</image:loc></image:image>
@@ -57,5 +61,55 @@
     <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/prompt-history/</loc>
     <lastmod>2026-09-23</lastmod>
     <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/prompt-input/prompt-history/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/typing-dots/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/typing-dots/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/thinking-shimmer/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/thinking-shimmer/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/streaming-text/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/streaming-text/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/reasoning-panel/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/reasoning-panel/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/agent-progress-steps/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/agent-progress-steps/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/skeleton-message/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/skeleton-message/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/ai-orb/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/ai-orb/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/status-spinner/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/status-spinner/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/tool-call-indicator/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/tool-call-indicator/screenshot.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/stop-generating/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://mmrahmanbappi.github.io/100-free-ai-ui-components/thinking/stop-generating/screenshot.png</image:loc></image:image>
   </url>
 </urlset>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+  Web Search Indicator: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Search Indicator | Free AI UI Component</title>
+<meta name="description" content="Shows that the AI is searching the web, with sources popping in one by one, then a short summary of how many it found.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{width:min(100%,640px);display:flex;flex-direction:column;gap:14px}
+.ai{display:flex;gap:12px;align-items:flex-start}
+.av{width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+.bubble{background:var(--surface);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:12px 15px;box-shadow:var(--shadow);color:var(--text);min-width:0;max-width:100%}
+.meta{font-size:12px;color:var(--muted)}
+.replay{align-self:center;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer}
+.replay:hover{border-color:var(--accent);color:var(--ink)}
+.tool{display:flex;flex-direction:column;gap:10px;width:100%}
+.pill{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13.5px;color:var(--text)}
+.pill .sp{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--accent);animation:spin .8s linear infinite}
+.pill.ok .sp{animation:none;border-color:var(--good);background:var(--good)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.srcs{display:flex;flex-wrap:wrap;gap:6px}
+.src{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:5px 10px 5px 6px;font-size:13px;animation:pop .25s ease}
+.src b{width:18px;height:18px;border-radius:5px;display:grid;place-items:center;color:#fff;font-size:10px}
+@keyframes pop{from{opacity:0;transform:scale(.9)}}
+.bubble{flex:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="ai"><div class="av" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div><div class="bubble"><div class="tool">
+    <span class="pill" id="p" role="status" aria-live="polite"><span class="sp" aria-hidden="true"></span><span id="pt">Searching the web</span></span>
+    <div class="srcs" id="srcs" aria-label="Sources"></div><div id="ans"></div></div></div></div>
+  <button class="replay" id="r" type="button">Run again</button>
+</div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+var SRC=[['Weather Service','#2563eb'],['City Guide','#0f766e'],['Travel Forum','#b45309'],['News Daily','#be123c'],['Trip Blog','#7c3aed']];
+var p=document.getElementById('p'),pt=document.getElementById('pt'),srcs=document.getElementById('srcs'),ans=document.getElementById('ans'),timers=[];
+function run(){timers.forEach(clearTimeout);timers=[];srcs.innerHTML='';ans.textContent='';p.classList.remove('ok');pt.textContent='Searching the web';
+  SRC.forEach(function(s,i){timers.push(setTimeout(function(){var d=document.createElement('span');d.className='src';d.innerHTML='<b></b><span></span>';
+    d.querySelector('b').style.background=s[1];d.querySelector('b').textContent=s[0][0];d.querySelector('span').textContent=s[0];srcs.appendChild(d);},600*(i+1)));});
+  timers.push(setTimeout(function(){p.classList.add('ok');pt.textContent='Searched 5 sources';ans.textContent='Expect light rain on Saturday morning, then clear skies. Pack a thin jacket.';},600*(SRC.length+1)));}
+document.getElementById('r').addEventListener('click',run);run();
+</script>
+</body>
+</html>
