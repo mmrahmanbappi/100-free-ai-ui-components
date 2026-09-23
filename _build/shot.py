@@ -49,6 +49,16 @@ STAGE["task-plan"] = "document.getElementById('go').click()"
 WAIT["task-plan"] = 1500
 WAIT["run-log-console"] = 3200
 WAIT["subagent-grid"] = 2200
+STAGE["voice-recorder"] = "document.getElementById('mic').click()"
+WAIT["voice-recorder"] = 1400
+WAIT["voice-mode"] = 900
+STAGE["audio-answer-player"] = "document.getElementById('pp').click()"
+WAIT["audio-answer-player"] = 6500
+STAGE["image-upload-preview"] = "var dt=new DataTransfer();[['#f59e0b','#be123c','Sunset.png'],['#0ea5e9','#1e3a8a','Lake.png'],['#84cc16','#166534','Forest.png']].forEach(function(c){var cv=document.createElement('canvas');cv.width=cv.height=120;var g=cv.getContext('2d'),gr=g.createLinearGradient(0,0,120,120);gr.addColorStop(0,c[0]);gr.addColorStop(1,c[1]);g.fillStyle=gr;g.fillRect(0,0,120,120);var b=atob(cv.toDataURL('image/png').split(',')[1]),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);dt.items.add(new File([u],c[2],{type:'image/png'}));});var inp=document.getElementById('inp');inp.files=dt.files;inp.dispatchEvent(new Event('change'))"
+STAGE["drop-overlay-upload"] = "document.getElementById('demo').click()"
+WAIT["drop-overlay-upload"] = 1000
+WAIT["live-transcript"] = 4700
+WAIT["image-generation-progress"] = 2600
 STAGE["ai-orb"] = "document.querySelector('[data-s=listen]').click()"
 
 

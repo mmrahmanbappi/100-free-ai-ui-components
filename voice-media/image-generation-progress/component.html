@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+  Image Generation Progress: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Generation Progress | Free AI UI Component</title>
+<meta name="description" content="Shows images being created: tiles start blurry and sharpen as progress grows, with a cancel button, then download and upscale actions.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{width:min(100%,560px);display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+.card h2{font-size:15.5px;margin:0 0 4px;color:var(--ink)}
+.muted{color:var(--muted);font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--accent)}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sm{padding:5px 10px;font-size:13px;border-radius:8px}
+.note{font-size:13px;padding:9px 12px;border-radius:10px;background:var(--surface-2);color:var(--text)}
+.note.warn{background:color-mix(in srgb,var(--warn) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line))}
+.wrap{width:min(100%,640px)}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:14px}
+.tile{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:var(--surface-2)}
+.tile .art{position:absolute;inset:-10%;transition:filter .4s}
+.tile .pct{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;font-weight:700;border-radius:99px;padding:2px 9px}
+.tile .acts{position:absolute;right:8px;bottom:8px;display:flex;gap:6px}
+.tile .acts button{border:0;background:rgba(0,0,0,.65);color:#fff;border-radius:8px;padding:5px 9px;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.bar{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;background:var(--accent);transition:width .3s}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+  <div class="hd"><div><h2>Creating 4 images</h2><p class="muted" style="margin:0" id="st" role="status" aria-live="polite">Starting</p></div><button class="btn sm" type="button" id="cx">Cancel</button></div>
+  <div class="bar" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100" id="pb"><i id="bi"></i></div>
+  <div class="tiles" id="tiles"></div>
+</div></div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+// Placeholder art made with CSS gradients. Replace with your generated image URLs.
+var ART=['radial-gradient(circle at 30% 30%,#fde68a,transparent 40%),linear-gradient(160deg,#1e3a8a,#7c3aed 60%,#f472b6)','radial-gradient(circle at 70% 40%,#a7f3d0,transparent 45%),linear-gradient(200deg,#064e3b,#0ea5e9)',
+'radial-gradient(circle at 50% 70%,#fecaca,transparent 40%),linear-gradient(120deg,#7c2d12,#f59e0b 55%,#fde68a)','radial-gradient(circle at 40% 50%,#e0e7ff,transparent 35%),linear-gradient(90deg,#111827,#4b5563 50%,#9ca3af)'];
+var tiles=document.getElementById('tiles'),st=document.getElementById('st'),bi=document.getElementById('bi'),pb=document.getElementById('pb'),cx=document.getElementById('cx'),p=ART.map(function(){return 0;}),timer;
+var DL='<svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 4v11M7 10l5 5 5-5M5 20h14\"/></svg>';
+ART.forEach(function(a,i){var t=document.createElement('div');t.className='tile';t.setAttribute('role','img');t.setAttribute('aria-label','Image '+(i+1)+' in progress');t.innerHTML='<div class="art"></div><span class="pct">0%</span>';t.querySelector('.art').style.background=a;tiles.appendChild(t);});
+var els=[].slice.call(tiles.children);
+function paint(){var avg=p.reduce(function(a,b){return a+b;},0)/p.length;bi.style.width=avg+'%';pb.setAttribute('aria-valuenow',Math.round(avg));
+  els.forEach(function(t,i){t.querySelector('.art').style.filter='blur('+Math.round((100-p[i])/5)+'px) saturate('+(0.4+p[i]/160)+')';var pc=t.querySelector('.pct');if(pc)pc.textContent=Math.round(p[i])+'%';});
+  st.textContent=avg<100?(avg<30?'Sketching shapes':avg<70?'Adding color and light':'Sharpening details')+', '+Math.round(avg)+'%':'Done. Your images are ready.';}
+function finish(){clearInterval(timer);cx.hidden=true;els.forEach(function(t,i){t.setAttribute('aria-label','Generated image '+(i+1));var pc=t.querySelector('.pct');if(pc)pc.remove();
+  t.insertAdjacentHTML('beforeend','<div class="acts"><button type="button">'+DL+'Save</button><button type="button">Upscale</button></div>');});}
+timer=setInterval(function(){p=p.map(function(v,i){return Math.min(100,v+3+Math.random()*7+i*.5);});paint();if(p.every(function(v){return v>=100;}))finish();},300);
+cx.addEventListener('click',function(){clearInterval(timer);st.textContent='Cancelled. No images were saved.';cx.hidden=true;});
+paint();
+</script>
+</body>
+</html>

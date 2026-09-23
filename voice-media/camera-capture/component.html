@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+  Camera Photo Capture: a free AI UI component
+  From 100 Free AI UI Components by MM Rahman Bappi, MIT license
+  https://mmrahmanbappi.github.io/100-free-ai-ui-components/
+
+  How to use: copy the CSS, HTML and JavaScript below into your page.
+  Colors are CSS variables at the top. Change --accent to match your brand.
+  Light and dark themes follow the visitor's system setting, or set
+  data-theme="dark" or data-theme="light" on the html element.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camera Photo Capture | Free AI UI Component</title>
+<meta name="description" content="Take a photo with the device camera to ask the AI about it. Shows a live preview, a shutter button and retake, with a clear message if there is no camera.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --accent:#5b5bd6; --accent-ink:#fff; --accent-soft:#ececfc;
+  --bg:#f7f7f8; --surface:#fff; --surface-2:#f1f1f4; --ink:#17171c; --text:#3a3a44; --muted:#6c6c78;
+  --line:#e3e3e8; --good:#15803d; --warn:#b45309; --bad:#c62828;
+  --radius:14px; --shadow:0 1px 2px rgba(20,20,30,.06),0 8px 24px -12px rgba(20,20,30,.18);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif; --mono:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme=dark]{
+  --accent:#8b8bff; --accent-ink:#0f0f16; --accent-soft:#25254a;
+  --bg:#0f0f13; --surface:#18181f; --surface-2:#212129; --ink:#f3f3f6; --text:#d4d4dc; --muted:#9a9aa8;
+  --line:#2c2c36; --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;background:var(--bg);color:var(--text);font:15px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+/* ---- component ---- */
+.wrap{width:min(100%,560px);display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+.card h2{font-size:15.5px;margin:0 0 4px;color:var(--ink)}
+.muted{color:var(--muted);font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer}
+.btn:hover{border-color:var(--accent)}.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sm{padding:5px 10px;font-size:13px;border-radius:8px}
+.note{font-size:13px;padding:9px 12px;border-radius:10px;background:var(--surface-2);color:var(--text)}
+.note.warn{background:color-mix(in srgb,var(--warn) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line))}
+.view{margin-top:14px;position:relative;aspect-ratio:16/10;max-height:50vh;width:100%;border-radius:14px;overflow:hidden;background:#111;display:grid;place-items:center;color:#cfcfd8;text-align:center}
+.view video,.view img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.view p{margin:0;padding:0 24px;font-size:14px;position:relative}
+.ctl{display:flex;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+.shot{width:62px;height:62px;border-radius:50%;border:4px solid var(--surface);outline:3px solid var(--accent);background:var(--accent);cursor:pointer}
+.shot:disabled{opacity:.4;cursor:not-allowed}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+  <h2>Take a photo</h2><p class="muted" style="margin:0">Point your camera at something and ask about it.</p>
+  <div class="view" id="view"><p id="msg">Press Start camera to begin.</p></div>
+  <div class="ctl" id="ctl"><button class="btn pri" type="button" id="start"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="4"/></svg>Start camera</button></div>
+  <p class="note warn" id="note" role="status" aria-live="polite" hidden></p>
+</div></div>
+<script>
+// Demo helper: add ?theme=dark or ?theme=light to the address to preview a theme.
+(function(){var t=new URLSearchParams(location.search).get('theme');if(t)document.documentElement.dataset.theme=t;})();
+var view=document.getElementById('view'),ctl=document.getElementById('ctl'),note=document.getElementById('note'),stream=null,video=null;
+function msg(t){view.innerHTML='<p></p>';view.firstChild.textContent=t;}
+function stop(){if(stream){stream.getTracks().forEach(function(t){t.stop();});stream=null;}}
+function controls(html){ctl.innerHTML=html;}
+async function start(){note.hidden=true;
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){note.hidden=false;note.textContent='This browser cannot use the camera. You can upload a photo instead.';return;}
+  try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'},audio:false});}
+  catch(e){note.hidden=false;note.textContent=e.name==='NotAllowedError'?'Camera access was blocked. Allow it in your browser settings, or upload a photo instead.':'No camera was found on this device. You can upload a photo instead.';return;}
+  view.innerHTML='';video=document.createElement('video');video.playsInline=true;video.muted=true;video.srcObject=stream;view.appendChild(video);await video.play();
+  controls('<button class="shot" type="button" id="snap" aria-label="Take photo"></button><button class="btn" type="button" id="cancel">Cancel</button>');
+  document.getElementById('snap').onclick=snap;document.getElementById('cancel').onclick=function(){stop();msg('Camera stopped.');reset();};}
+function snap(){var c=document.createElement('canvas');c.width=video.videoWidth;c.height=video.videoHeight;c.getContext('2d').drawImage(video,0,0);stop();
+  var img=document.createElement('img');img.src=c.toDataURL('image/jpeg',.9);img.alt='Photo you just took';view.innerHTML='';view.appendChild(img);
+  controls('<button class="btn" type="button" id="re">Retake</button><button class="btn pri" type="button" id="use">Use this photo</button>');
+  document.getElementById('re').onclick=start;document.getElementById('use').onclick=function(){note.hidden=false;note.className='note';note.textContent='Photo added to your message.';};}
+function reset(){controls('<button class="btn pri" type="button" id="start"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 8h4l2-3h6l2 3h4v11H3z\"/><circle cx=\"12\" cy=\"13\" r=\"4\"/></svg>Start camera</button>');document.getElementById('start').onclick=start;}
+document.getElementById('start').onclick=start;
+</script>
+</body>
+</html>

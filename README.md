@@ -6,7 +6,7 @@ The parts every AI app needs: prompt boxes, thinking animations, token meters, a
 
 **[See every component with a live demo](https://mmrahmanbappi.github.io/100-free-ai-ui-components/)**
 
-80 of 100 components are ready. New ones are added every week.
+90 of 100 components are ready. New ones are added every week.
 
 ## Why use these components
 
@@ -163,9 +163,26 @@ Tool calls, approvals, task plans and logs for AI agents.
 | [![AI Memory Manager](agents/memory-panel/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/memory-panel/) | **[AI Memory Manager](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/memory-panel/)**<br>A list of things the assistant remembers about someone, with edit and delete for each item, a way to add one, and a switch to turn memory off. |
 | [![App Connectors List](agents/connectors-list/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/connectors-list/) | **[App Connectors List](https://mmrahmanbappi.github.io/100-free-ai-ui-components/agents/connectors-list/)**<br>A list of apps the AI can connect to, like calendar, email and files. Each shows what it can access, with Connect and Disconnect buttons. |
 
+### Voice and Media
+
+Voice input, audio answers, image upload and generation progress.
+
+| Preview | Component |
+|---|---|
+| [![Voice Recorder with Waveform](voice-media/voice-recorder/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/voice-recorder/) | **[Voice Recorder with Waveform](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/voice-recorder/)**<br>Record a voice message with live bars that follow your voice. Uses the real microphone when allowed, and explains clearly when it is not. |
+| [![Voice Mode Screen](voice-media/voice-mode/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/voice-mode/) | **[Voice Mode Screen](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/voice-mode/)**<br>A full voice conversation screen with a glowing circle that reacts while the AI speaks, live captions, and mute and end buttons. |
+| [![Audio Answer Player](voice-media/audio-answer-player/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/audio-answer-player/) | **[Audio Answer Player](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/audio-answer-player/)**<br>A compact player for spoken answers with play and pause, a seek bar, playback speed and the matching text highlighted as it plays. |
+| [![Image Upload with Preview](voice-media/image-upload-preview/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/image-upload-preview/) | **[Image Upload with Preview](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/image-upload-preview/)**<br>Add images by button or drag and drop and see thumbnails right away. Checks the file type and size and explains any problem. |
+| [![Page Drop Zone with Upload Progress](voice-media/drop-overlay-upload/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/drop-overlay-upload/) | **[Page Drop Zone with Upload Progress](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/drop-overlay-upload/)**<br>Drag files anywhere on the page to show a full screen drop area. Each file then uploads with its own progress bar and a cancel button. |
+| [![Camera Photo Capture](voice-media/camera-capture/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/camera-capture/) | **[Camera Photo Capture](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/camera-capture/)**<br>Take a photo with the device camera to ask the AI about it. Shows a live preview, a shutter button and retake, with a clear message if there is no camera. |
+| [![Live Transcript](voice-media/live-transcript/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/live-transcript/) | **[Live Transcript](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/live-transcript/)**<br>Captions that appear as people talk, with speaker names and times. The newest line is highlighted, and the full text can be copied. |
+| [![Voice and Speech Settings](voice-media/voice-settings/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/voice-settings/) | **[Voice and Speech Settings](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/voice-settings/)**<br>Pick a reading voice from the ones in the browser, set the speed and pitch, and hear a preview. Shows a notice when no voices are available. |
+| [![Image Prompt Builder](voice-media/image-prompt-editor/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/image-prompt-editor/) | **[Image Prompt Builder](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/image-prompt-editor/)**<br>Write a prompt for an image and pick a style, shape and number of images. A frame shows the chosen shape, and the final prompt updates live. |
+| [![Image Generation Progress](voice-media/image-generation-progress/thumb.webp)](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/image-generation-progress/) | **[Image Generation Progress](https://mmrahmanbappi.github.io/100-free-ai-ui-components/voice-media/image-generation-progress/)**<br>Shows images being created: tiles start blurry and sharpen as progress grows, with a cancel button, then download and upscale actions. |
+
 ## Coming next
 
-Voice and Media, Trust and Onboarding.
+Trust and Onboarding.
 
 ## License
 
